@@ -17,7 +17,7 @@ pnpm install
 ### 2. Create .env File
 
 ```bash
-  VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:3000
 ```
 
 Replace the URL with your deployed backend if needed (e.g. https://devcards-api.up.railway.app)
@@ -25,7 +25,7 @@ Replace the URL with your deployed backend if needed (e.g. https://devcards-api.
 ### 3. Start the Development Server
 
 ```bash
-  pnpm dev
+pnpm dev
 ```
 
 The app will run at: http://localhost:5173
