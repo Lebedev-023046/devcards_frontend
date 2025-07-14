@@ -1,0 +1,16 @@
+{
+  "useTypeScript": true,
+  "defaultTemplate": "import styles from './${componentStyleFileName}';\n\nexport function ${componentName}() {\n  return (\n    <>\n      <div className={styles.${camelCase}Wrapper}>Hello from ${componentName}</div>\n    </>\n  );\n}",
+  "folderNameStyle": "PascalCase",
+  "fileNameStyle": "PascalCase",
+  "createStyleFile": true,
+  "styleFileNameStyle": "PascalCase",
+  "styleExtension": "module.css",
+  "generateIndexFile": true,
+  "indexTemplate": "export { ${componentFolderName} } from './${componentFolderName}';\n",
+  "indexInComponentFolder": true,
+  "generateTypesFile": false,
+  "typesTemplate": "export interface ${componentName}Props {\n}\n",
+  "generateTestFile": false,
+  "testTemplate": "import { render } from '@testing-library/react';\nimport ${componentName} from './${componentFolderName}';\n\ndescribe('${componentName}', () => {\n  it('renders correctly', () => {\n    render(<${componentName} />);\n  });\n});"
+}
