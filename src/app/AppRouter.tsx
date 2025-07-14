@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
 const SignInPage = lazy(() => import('@/pages/SignInPage'));
