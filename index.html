@@ -6,6 +6,25 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + React + TS</title>
+
+  <!-- Set theme on load -->
+  <script>
+    (function() {
+      try {
+        let theme = localStorage.getItem('theme');
+        if (theme ) {
+          document.documentElement.setAttribute('data-theme', theme);
+        } else {
+          localStorage.setItem('theme', 'light');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {
+        console.warn('Could not set theme', e);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="./src/app/index.css">
 </head>
 
 <body>
