@@ -1,0 +1,30 @@
+.wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip {
+	position: absolute;
+	z-index: 100000;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-8px);
+
+	padding: var(--spacing-1) var(--spacing-2);
+	background-color: var(--color-text-primary);
+	color: var(--color-text-inverse);
+	font-size: var(--font-size-sm);
+	border-radius: var(--radius-sm);
+	white-space: nowrap;
+	z-index: 10;
+	box-shadow: var(--shadow-md);
+	pointer-events: none;
+	opacity: 0;
+	animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}
