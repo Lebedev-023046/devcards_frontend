@@ -4,10 +4,10 @@
 	"prettier.singleQuote": true,
 	"prettier.trailingComma": "all",
 	"prettier.semi": true,
-	"prettier.printWidth": 100,
+	"prettier.printWidth": 80,
 	"prettier.arrowParens": "avoid",
 
-	// "editor.formatOnSave": true,
+	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "always",
 		"source.fixAll.eslint": "always"
