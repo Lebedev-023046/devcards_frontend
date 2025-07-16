@@ -5,7 +5,6 @@ import { queryClient } from '../shared/api/query-client.ts';
 import { AppRouter } from './AppRouter.tsx';
 import './global.css';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
-import './reset.css';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
