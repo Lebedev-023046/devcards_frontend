@@ -1,0 +1,154 @@
+:root {
+	--transition-duration: 0.15s;
+}
+
+.root {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	margin-bottom: 0rem;
+}
+
+.root:not(.labelPersistent) .label {
+	position: absolute;
+	left: var(--spacing-2);
+	top: 0%;
+	margin-top: -1.25rem;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-primary);
+	opacity: 0;
+	transform: translateY(5px);
+	transition: opacity var(--transition-duration),
+		transform var(--transition-duration);
+}
+
+.root.labelPersistent .label {
+	position: static;
+	opacity: 1;
+	transform: none;
+	margin-left: var(--spacing-2);
+	margin-bottom: var(--spacing-1);
+}
+
+.root:not(.labelPersistent) .wrapper:has(input:focus) .label {
+	opacity: 1;
+	transform: translateY(-8%);
+}
+.wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.input {
+	position: relative;
+	flex: 1;
+	padding: var(--spacing-2) var(--spacing-3);
+	font-size: var(--font-size-md);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	border-radius: var(--radius-md);
+	color: var(--color-text-primary);
+	transition: border-color var(--transition-duration);
+}
+
+.hasLeftIcon {
+	padding-left: calc(var(--spacing-2) + 16px + var(--spacing-2));
+}
+
+.hasRightIcon {
+	padding-right: calc(var(--spacing-2) + 16px + var(--spacing-2));
+}
+
+.input:focus {
+	outline: none;
+	border-color: var(--color-primary);
+}
+
+.error .input {
+	border-color: var(--color-error);
+}
+
+.helperText {
+	position: relative;
+	padding-left: var(--spacing-2);
+	margin-top: 0.1rem;
+	max-height: 0;
+	overflow: hidden;
+	font-size: var(--font-size-sm);
+	color: var(--color-error);
+	opacity: 0;
+	transform: translateY(-(var(--spacing-2)));
+	transition: max-height var(--transition-duration) ease,
+		opacity var(--transition-duration) ease,
+		transform var(--transition-duration) ease;
+}
+
+.error .helperText {
+	opacity: 1;
+	max-height: 2.5rem;
+	transform: translateY(0);
+}
+
+.iconLeft,
+.iconRight {
+	position: absolute;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.iconButton {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+.iconLeft {
+	left: var(--spacing-2);
+}
+
+.iconRight {
+	right: var(--spacing-2);
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.input:disabled {
+	background-color: var(--color-background);
+	color: var(--color-text-muted);
+	border-color: var(--color-border);
+	cursor: not-allowed;
+}
+
+.root.variantOutline .input {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+}
+
+.root.variantFilled .input {
+	background: var(--color-background);
+	border: none;
+}
+.root.variantFilled .input:focus {
+	background: var(--color-background);
+	border: none;
+}
+.root.variantUnderline .input {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid var(--color-border);
+	border-radius: 0;
+}
+.root.variantUnderline .input:focus {
+	border-bottom-color: var(--color-primary);
+}
