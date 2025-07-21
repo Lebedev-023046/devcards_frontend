@@ -1,0 +1,56 @@
+.root {
+	background-color: var(--color-primary);
+	padding: var(--spacing-4) var(--spacing-6);
+	font-size: var(--font-size-lg);
+	font-weight: 400;
+	height: var(--spacing-24);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	box-shadow: var(--shadow-lg);
+}
+
+.logoWrapper {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+}
+
+.logoImage {
+	width: var(--size-logo);
+	height: var(--size-logo);
+}
+
+.logoTitle {
+	margin: 0;
+	color: var(--color-text-primary);
+	text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.controls {
+	display: flex;
+	gap: var(--spacing-5);
+	align-items: center;
+}
+
+.toggleIcon {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.rotate {
+	transform: rotate(45deg);
+}
+
+.searchIcon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.tryItBtn {
+	font-size: var(--spacing-5);
+}
