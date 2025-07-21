@@ -21,20 +21,23 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--spacing-2);
-	padding: var(--spacing-2) var(--spacing-4);
+	padding: var(--spacing-3) var(--spacing-4);
 	overflow: visible;
-	transition: padding 0.2s ease, opacity 0.2s ease, transform 0.1s ease,
-		background-color 0.2s ease;
-	background-color: var(--color-primary);
-	color: var(--color-text-inverse);
+	color: var(--color-primary);
 	border: none;
 	box-shadow: var(--shadow-sm);
 	cursor: pointer;
+	transition: padding 0.2s ease, opacity 0.2s ease, transform 0.1s ease,
+		background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .variant-primary {
-	background-color: var(--color-primary);
-	color: var(--color-text-inverse);
+	background: linear-gradient(
+		to right,
+		var(--color-button-primary) 0%,
+		var(--color-button-secondary) 70%
+	);
+	color: var(--color-text-primary);
 	box-shadow: var(--shadow-sm);
 }
 .variant-primary:hover:not(:disabled) {
@@ -78,11 +81,12 @@
 	background-color: transparent;
 	color: var(--color-primary);
 }
+
 .variant-ghost:hover:not(:disabled) {
-	background-color: var(--color-border);
+	background-color: none;
 }
 .variant-ghost:active:not(:disabled) {
-	background-color: var(--color-border);
+	background-color: none;
 }
 
 .variant-text {
@@ -103,19 +107,6 @@
 }
 .variant-link:hover:not(:disabled) {
 	text-decoration: underline;
-}
-
-.size-sm {
-	padding: calc(var(--spacing-1)) var(--spacing-2);
-	font-size: var(--font-size-sm);
-}
-.size-md {
-	padding: var(--spacing-2) var(--spacing-4);
-	font-size: var(--font-size-md);
-}
-.size-lg {
-	padding: var(--spacing-3) var(--spacing-6);
-	font-size: var(--font-size-lg);
 }
 
 .loading {
@@ -141,8 +132,8 @@
 	flex-shrink: 0;
 	justify-content: center;
 	overflow: visible;
-	width: 1em;
-	height: 1em;
+	width: auto;
+	height: auto;
 	color: currentColor;
 	line-height: 1;
 }
@@ -177,8 +168,8 @@
 /* IconOnly */
 .iconOnly {
 	padding: var(--spacing-2);
-	width: calc(var(--spacing-2) * 2 + 1em);
-	height: calc(var(--spacing-2) * 2 + 1em);
+	width: auto;
+	height: auto;
 
 	display: inline-flex;
 	align-items: center;

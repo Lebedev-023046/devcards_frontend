@@ -6,10 +6,11 @@ import type { ButtonProps } from './types';
 
 export function Button<T extends React.ElementType = 'button'>({
 	as,
+	iconOnly = false,
 	...props
 }: ButtonProps<T> &
 	Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
-	const { iconOnly, 'aria-label': ariaLabel } = props;
+	const { 'aria-label': ariaLabel } = props;
 	if (iconOnly && !ariaLabel) {
 		throw new Error(
 			'Button(iconOnly) requires an aria-label for accessibility',
@@ -29,15 +30,17 @@ export function Button<T extends React.ElementType = 'button'>({
 		shape = 'rounded',
 		tooltip,
 		animationType = 'none',
+		className,
 		onClick,
 		...rest
 	} = props;
 
 	const Component = as || 'button';
 
-	const className = cn(
+	const classNames = cn(
+		className,
 		styles.root,
-		styles[`size-${size}`],
+		`size-${size}`,
 		styles[`variant-${variant}`],
 		styles[`shape-${shape}`],
 		fullWidth && styles.fullWidth,
@@ -49,7 +52,7 @@ export function Button<T extends React.ElementType = 'button'>({
 	const component = (
 		<Component
 			type={type}
-			className={className}
+			className={classNames}
 			onClick={onClick}
 			disabled={disabled || loading}
 			aria-disabled={disabled || loading}

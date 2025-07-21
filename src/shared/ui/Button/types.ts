@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 type ButtonType = 'button' | 'submit' | 'reset';
 type ButtonShape = 'pill' | 'rounded' | 'rounded-sm' | 'square';
 type ButtonVariant =
@@ -20,7 +20,7 @@ type ButtonAnimation =
 	| 'combined';
 
 export interface ButtonOwnProps {
-	children: ReactNode;
+	children?: ReactNode;
 	type?: ButtonType;
 	variant?: ButtonVariant;
 	size?: ButtonSize;
