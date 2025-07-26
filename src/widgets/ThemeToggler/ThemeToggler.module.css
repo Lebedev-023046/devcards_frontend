@@ -1,0 +1,10 @@
+.toggleIcon {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.rotate {
+	transform: rotate(45deg);
+}
