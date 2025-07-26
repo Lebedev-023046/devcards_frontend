@@ -1,20 +1,14 @@
-import { ROUTES } from '@/shared/routes';
-import { useTheme } from '@/shared/styles/useTheme';
-import cn from 'clsx';
+import { HeaderProfile } from '@/widgets/HeaderProfile';
+import { MobileMenu } from '@/widgets/MobileMenu';
+import { ThemeToggler } from '@/widgets/ThemeToggler';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { Link } from 'react-router-dom';
-import { Button } from '../../Button';
 import { Input } from '../../Input';
 import styles from './Header.module.css';
 import Logo from '/header/logo.svg';
-import Moon from '/header/moon.svg';
 import Search from '/header/search.svg';
-import Sun from '/header/sun.svg';
-import TryIt from '/header/try-it.svg';
 
 export function Header() {
-	const { theme, setTheme } = useTheme();
-	const isDark = theme === 'dark';
-
 	return (
 		<div className={styles.root}>
 			<Link to={'/'} className={styles.logoWrapper}>
@@ -32,26 +26,9 @@ export function Header() {
 					}
 				/>
 
-				<Button as={Link} to={ROUTES.SIGNUP()} startIcon={<img src={TryIt} />}>
-					Попробовать
-				</Button>
-
-				<Button
-					variant='ghost'
-					size='xs'
-					iconOnly
-					aria-label='Toggle theme'
-					startIcon={
-						<img
-							className={cn(styles.toggleIcon, !isDark && styles.rotate)}
-							src={isDark ? Moon : Sun}
-							alt='toggle theme'
-						/>
-					}
-					onClick={() => setTheme(isDark ? 'light' : 'dark')}
-				>
-					Toggle THeme
-				</Button>
+				<ThemeToggler />
+				<HeaderProfile />
+				<MobileMenu />
 			</div>
 		</div>
 	);

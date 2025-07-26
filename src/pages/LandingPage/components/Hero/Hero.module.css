@@ -1,9 +1,9 @@
 .heroWrapper {
+	flex: 1;
 	position: relative;
 	background-image: url('/hero/hero-bg.webp');
 	background-blend-mode: normal;
 	background-size: cover;
-	height: calc(100vh - var(--spacing-24));
 	background-position: 0% 85%;
 }
 
@@ -16,7 +16,9 @@ html[data-theme='dark'] .heroWrapper {
 
 .contentWrapper {
 	padding-top: var(--spacing-24);
-	padding-left: 8rem;
+	padding-left: var(--spacing-32);
+	padding-right: var(--spacing-12);
+	padding-bottom: var(--spacing-12);
 	color: var(--color-text-primary);
 }
 
@@ -33,11 +35,49 @@ html[data-theme='dark'] .heroWrapper {
 }
 
 .description {
-	font-size: var(--font-size-xxl);
+	font-size: var(--font-size-2xl);
 	font-weight: 700;
 	margin-bottom: var(--spacing-24);
 }
 
 .button {
 	margin-bottom: var(--spacing-24);
+}
+
+@media screen and (max-width: 1024px) {
+	.contentWrapper {
+		padding-top: var(--spacing-12);
+		padding-left: var(--spacing-16);
+		padding-right: var(--spacing-12);
+		padding-bottom: var(--spacing-12);
+	}
+
+	.title {
+		font-size: var(--font-size-3xl);
+		margin-bottom: var(--spacing-6);
+	}
+
+	.subtitle {
+		font-size: var(--font-size-2xl);
+		margin-bottom: var(--spacing-6);
+	}
+
+	.description {
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--spacing-12);
+	}
+
+	.button {
+		margin-bottom: var(--spacing-12);
+	}
+}
+@media screen and (max-width: 768px) {
+	.contentWrapper {
+		padding: var(--spacing-14);
+	}
+}
+@media screen and (max-width: 425px) {
+	.contentWrapper {
+		padding: var(--spacing-10);
+	}
 }

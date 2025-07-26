@@ -23,3 +23,21 @@
 	color: var(--color-text-primary);
 	text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
+
+@media screen and (max-width: 768px) {
+	.logoImage {
+		width: var(--size-logoMobile);
+		height: var(--size-logoMobile);
+	}
+
+	.logoTitle {
+		font-size: var(--font-size-xl);
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.footerWrapper {
+		padding: var(--spacing-3) var(--spacing-3);
+		height: auto;
+	}
+}

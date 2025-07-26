@@ -1,9 +1,11 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	min-height: 100dvh;
+	height: 100%;
 }
 
 .root {
 	flex: 1;
+	display: flex; /* если внутри нужен флекс */
+	flex-direction: column;
 }
