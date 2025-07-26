@@ -40,7 +40,7 @@ export function Button<T extends React.ElementType = 'button'>({
 	const classNames = cn(
 		className,
 		styles.root,
-		`size-${size}`,
+		styles[`size-${size}`],
 		styles[`variant-${variant}`],
 		styles[`shape-${shape}`],
 		fullWidth && styles.fullWidth,
@@ -60,12 +60,14 @@ export function Button<T extends React.ElementType = 'button'>({
 			aria-label={iconOnly ? ariaLabel : undefined}
 			{...rest}
 		>
-			{loading && <span className={styles.spinner} aria-hidden='true' />}
 			{!loading && startIcon && (
 				<span className={styles.icon}>{startIcon}</span>
 			)}
 
-			<span className={styles.label}>{loading ? 'Loading...' : children}</span>
+			<span className={styles.label}>
+				{loading && <span className={styles.spinner} aria-hidden='true' />}
+				{loading ? 'Loading...' : children}
+			</span>
 
 			{!loading && endIcon && <span className={styles.icon}>{endIcon}</span>}
 		</Component>
