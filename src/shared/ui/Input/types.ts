@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+	inputSize?: 'sm' | 'md' | 'lg';
 	label?: string;
 	error?: boolean;
 	helperText?: string;
@@ -8,7 +9,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	endIcon?: ReactNode;
 	fullWidth?: boolean;
 	labelPersistent?: boolean;
-	variant?: 'outline' | 'filled' | 'underline';
+	variant?: 'primary' | 'secondary' | 'outline' | 'filled' | 'underline';
 	onStartIconClick?: React.MouseEventHandler;
 	onEndIconClick?: React.MouseEventHandler;
 }
