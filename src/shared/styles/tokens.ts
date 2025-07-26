@@ -6,33 +6,39 @@ export const tokens = {
 			// Primary color: main brand hue for primary buttons, links, and highlights
 			primary: '#6C5DD3',
 			// Hover state for primary elements
-			'primary-hover': '#5B4BC1',
+			'primary-hover': '#3A4994',
 			// Active/pressed state for primary elements
-			'primary-active': '#4A3990',
+			'primary-active': '#2B3770',
 
 			// Secondary color: for secondary buttons, badges, accents
-			secondary: '#3F51B5',
-			'secondary-hover': '#344494',
-			'secondary-active': '#2A3573',
+			secondary: '#122C5C',
+			'secondary-hover': '#1A4086',
+			'secondary-active': '#2254B1',
 
-			// Page background (canvas)
-			background: '#F5F7FF',
-			// Surface background (cards, panels)
-			surface: '#FFFFFF',
+			background: '#FFFFFF',
+			'background-hover': '#6565FA',
+			'background-active': '#4848f9',
+
+			surface: '#4c4c8b',
+
+			'button-primary': '#FEB47B',
+			'button-secondary': '#FF7E5F',
 
 			// Main body text
-			'text-primary': '#1F1F40',
+			'text-primary': '#f3f2f2',
 			// Secondary text: subtitles, labels
 			'text-secondary': '#55557A',
 			// Muted text: placeholders, disabled text
-			'text-muted': '#8888A0',
+			'text-muted': '#bebebe',
 			// Inverse text on dark surfaces/buttons
 			'text-inverse': '#FFFFFF',
 
 			// Border lines, dividers
 			border: '#E0E0F0',
 			// Accent: sparing highlights, links, badges
-			accent: '#9F7AEA',
+			accent: '#FFDAF4',
+			'accent-hover': '#FFA7E4',
+			'accent-active': '#FF74D5',
 
 			// Status colors
 			error: '#E53E3E', // error messages, icons
@@ -42,7 +48,7 @@ export const tokens = {
 
 		dark: {
 			// Primary color for dark mode
-			primary: '#8E7EF3',
+			primary: '#1A1A2E',
 			// Hover state in dark mode
 			'primary-hover': '#7B6CE3',
 			// Active state in dark mode
@@ -58,8 +64,11 @@ export const tokens = {
 			// Dark surface (cards, panels)
 			surface: '#242444',
 
+			'button-primary': '#4FD1C5',
+			'button-secondary': '#38B2AC',
+
 			// Main text on dark bg
-			'text-primary': '#EDEDED',
+			'text-primary': '#dddddd',
 			// Secondary text
 			'text-secondary': '#B5B5DC',
 			// Muted text
@@ -86,10 +95,22 @@ export const tokens = {
 		2: '0.5rem',
 		3: '0.75rem',
 		4: '1rem',
-		5: '1.5rem',
-		6: '2rem',
-		8: '3rem',
-		10: '4rem',
+		5: '1.25rem',
+		6: '1.5rem',
+		8: '1.75rem',
+		10: '2rem',
+		12: '2.5rem',
+		13: '2.75rem',
+		14: '3rem',
+		15: '3.25rem',
+		16: '4rem',
+		20: '5rem',
+		24: '6rem',
+		32: '8rem',
+		40: '10rem',
+		48: '12rem',
+		56: '14rem',
+		64: '16rem',
 	},
 	radius: {
 		none: '0px',
@@ -104,13 +125,17 @@ export const tokens = {
 		lg: '0 0.625rem 0.9375rem rgba(0, 0, 0, 0.15)',
 	},
 	font: {
-		'family-sans': "Inter, system-ui, -apple-system, 'Segoe UI', sans-serif",
-		'family-mono': "Menlo, Monaco, Consolas, 'Courier New', monospace",
+		'family-heading': 'Poppins, sans-serif',
+		'family-body': 'Roboto, sans-serif',
 		'size-xs': '0.75rem',
 		'size-sm': '0.875rem',
 		'size-md': '1rem',
 		'size-lg': '1.25rem',
 		'size-xl': '1.5rem',
+		'size-2xl': '2rem',
+		'size-3xl': '4rem',
+		'size-title': '6rem',
+		'size-subtitle': '2.5rem',
 		'weight-regular': '400',
 		'weight-medium': '500',
 		'weight-bold': '700',
@@ -118,6 +143,8 @@ export const tokens = {
 	size: {
 		spinner: '1em',
 		icon: '1em',
+		logo: '4rem',
+		logoMobile: '3rem',
 	},
 };
 
@@ -142,6 +169,9 @@ export function applyTheme(mode: ThemeMode) {
 	);
 	Object.entries(tokens.font).forEach(
 		([k, v]) => (commonVars[`--font-${k}`] = v),
+	);
+	Object.entries(tokens.size).forEach(
+		([k, v]) => (commonVars[`--size-${k}`] = v),
 	);
 	setVars(commonVars);
 

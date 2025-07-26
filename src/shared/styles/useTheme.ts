@@ -6,10 +6,12 @@ export function useTheme() {
 		() => (localStorage.getItem('theme') as ThemeMode) || 'light',
 	);
 
+	const isDark = theme === 'dark';
+
 	useEffect(() => {
 		applyTheme(theme);
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
 	}, [theme]);
-	return { theme, setTheme } as const;
+	return { theme, isDark, setTheme } as const;
 }
