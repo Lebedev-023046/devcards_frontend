@@ -18,10 +18,11 @@ html {
 }
 
 html,
-body {
+body,
+#root {
+	width: 100%;
 	height: 100%;
 	font-family: var(--font-family-body);
-	font-size: var(--font-size-md);
 }
 
 h1,
@@ -37,22 +38,4 @@ h6 {
 	transition-property: background-color, color, border-color, box-shadow;
 	transition-duration: 0.15s;
 	transition-timing-function: ease;
-}
-
-.size-xs {
-	padding: 0;
-	font-size: var(--font-size-sm);
-}
-
-.size-sm {
-	padding: calc(var(--spacing-1)) var(--spacing-2);
-	font-size: var(--font-size-sm);
-}
-.size-md {
-	padding: var(--spacing-2) var(--spacing-4);
-	font-size: var(--font-size-md);
-}
-.size-lg {
-	padding: var(--spacing-4) var(--spacing-14);
-	font-size: var(--font-size-lg);
 }
