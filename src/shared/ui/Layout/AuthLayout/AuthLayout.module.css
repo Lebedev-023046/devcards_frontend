@@ -1,1 +1,16 @@
-/* Styles for AuthLayout */
+.authWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: var(--spacing-12);
+	min-height: 100dvh;
+	background: url('/auth/auth-bg.webp') center no-repeat;
+	background-blend-mode: normal;
+	background-size: cover;
+}
+
+html[data-theme='dark'] .authWrapper {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+		url('/auth/auth-bg.webp');
+	background-blend-mode: overlay;
+}
