@@ -1,7 +1,7 @@
 import type { ApiResponse } from '@/shared/api/types';
 import { api } from '@/shared/lib/api';
 import { ENDPOINTS } from '@shared/api/endpoints';
-import type { AuthRequestDto, AuthResponseDto } from './types';
+import type { AuthRequestDto, AuthResponseDto } from './model';
 
 type AuthResponse = Promise<ApiResponse<AuthResponseDto>>;
 type AuthRequest = AuthRequestDto;
