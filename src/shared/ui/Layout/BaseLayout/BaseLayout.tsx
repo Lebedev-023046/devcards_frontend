@@ -8,7 +8,7 @@ export function BaseLayout() {
 	return (
 		<div className={styles.wrapper}>
 			<Header />
-			<main className={styles.root}>
+			<main className={styles.mainWrapper}>
 				<Outlet />
 			</main>
 			<Footer />

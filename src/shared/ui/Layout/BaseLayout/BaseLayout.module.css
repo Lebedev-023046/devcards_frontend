@@ -4,8 +4,16 @@
 	height: 100%;
 }
 
-.root {
+.mainWrapper {
 	flex: 1;
-	display: flex; /* если внутри нужен флекс */
+	display: flex;
 	flex-direction: column;
+	background-color: var(--color-background);
+	color: var(--color-text-inverse);
+}
+
+@media screen and (max-width: 425px) {
+	.root {
+		padding: var(--spacing-8) var(--spacing-6);
+	}
 }

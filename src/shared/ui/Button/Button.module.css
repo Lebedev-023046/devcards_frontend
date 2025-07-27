@@ -18,6 +18,8 @@
 .root {
 	position: relative;
 	display: inline-flex;
+	flex: 1 1 auto;
+	white-space: nowrap;
 	align-items: center;
 	justify-content: center;
 	gap: var(--spacing-2);
