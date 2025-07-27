@@ -31,7 +31,7 @@ export const tokens = {
 			// Muted text: placeholders, disabled text
 			'text-muted': '#bebebe',
 			// Inverse text on dark surfaces/buttons
-			'text-inverse': '#FFFFFF',
+			'text-inverse': '#000000',
 
 			// Border lines, dividers
 			border: '#E0E0F0',
@@ -47,11 +47,9 @@ export const tokens = {
 		},
 
 		dark: {
-			// Primary color for dark mode
+			// Primary color
 			primary: '#1A1A2E',
-			// Hover state in dark mode
 			'primary-hover': '#7B6CE3',
-			// Active state in dark mode
 			'primary-active': '#594AB0',
 
 			// Secondary color
@@ -60,7 +58,7 @@ export const tokens = {
 			'secondary-active': '#49368A',
 
 			// Dark page background
-			background: '#1A1A2E',
+			background: '#2A2855',
 			// Dark surface (cards, panels)
 			surface: '#242444',
 
@@ -74,7 +72,7 @@ export const tokens = {
 			// Muted text
 			'text-muted': '#8A8ABF',
 			// Inverse text on light surfaces
-			'text-inverse': '#1A1A2E',
+			'text-inverse': '#FFFFFF',
 
 			// Borders/dividers in dark mode
 			border: '#3B3B5A',
