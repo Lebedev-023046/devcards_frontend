@@ -2,8 +2,9 @@ import type { ApiResponse } from '@/shared/api/types';
 import { useSession } from '@/shared/hooks/useSession';
 import { useQuery } from '@tanstack/react-query';
 import { jwtDecode } from 'jwt-decode';
-import { fetchUser } from './api';
-import type { UserInfo } from './model';
+import type { UserInfo } from '../model';
+
+import { userApi } from '../api';
 
 /**
  * @param withMeta - if true, returns user info with meta
@@ -40,7 +41,7 @@ export const useUser = ({ withMeta = false }: Props = {}): UseUserResult => {
 		isLoading,
 	} = useQuery({
 		queryKey: ['userInfo', sub],
-		queryFn: () => fetchUser(sub!),
+		queryFn: () => userApi.getUser(sub!),
 		enabled: !!sub,
 	});
 

@@ -1,8 +1,44 @@
 import type { ApiResponse } from '@/shared/api/types';
 import { api } from '@/shared/lib/api';
-import type { UserInfo } from './model';
+import { ENDPOINTS } from '@shared/api/endpoints';
+import type { AuthRequestDto, AuthResponseDto, UserInfo } from './model';
 
-export async function fetchUser(id: string): Promise<ApiResponse<UserInfo>> {
-	const data = await api.get<ApiResponse<UserInfo>>(`/users/${id}`);
-	return data.data;
-}
+type AuthResponse = Promise<ApiResponse<AuthResponseDto>>;
+type AuthRequest = AuthRequestDto;
+
+export const userApi = {
+	getUser: async (id: string): Promise<ApiResponse<UserInfo>> => {
+		const data = await api.get<ApiResponse<UserInfo>>(
+			ENDPOINTS.user.getUser(id),
+		);
+		return data.data;
+	},
+};
+
+export const authApi = {
+	/**
+	 * register new user
+	 * @param payload.email
+	 * @param payload.password
+	 */
+	signUp: async (payload: AuthRequest, signal?: AbortSignal): AuthResponse => {
+		const res = await api.post<AuthResponse>(ENDPOINTS.auth.signup(), payload, {
+			skipAuth: true,
+			signal,
+		});
+		return res.data;
+	},
+
+	/**
+	 * sign in
+	 * @param payload.email
+	 * @param payload.password
+	 */
+	signIn: async (payload: AuthRequest, signal?: AbortSignal): AuthResponse => {
+		const res = await api.post<AuthResponse>(ENDPOINTS.auth.signin(), payload, {
+			signal,
+			skipAuth: true,
+		});
+		return res.data;
+	},
+};
