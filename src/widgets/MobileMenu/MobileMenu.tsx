@@ -1,4 +1,4 @@
-import { useUser } from '@/entities/user/hooks';
+import { useUser } from '@/entities/user/hooks/useUser';
 import { useSession } from '@/shared/hooks/useSession';
 import { ROUTES } from '@/shared/routes';
 import { Button } from '@/shared/ui/Button';
@@ -20,7 +20,7 @@ import PublicDecks from '/deck/public-decks.svg';
 
 export function MobileMenu() {
 	const { signout } = useSession();
-	const { data: user, isAuth } = useUser();
+	const { isAuth } = useUser();
 
 	const [isOpen, setIsOpen] = useState(false);
 

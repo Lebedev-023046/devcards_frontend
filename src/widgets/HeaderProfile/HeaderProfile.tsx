@@ -1,4 +1,4 @@
-import { useUser } from '@/entities/user/hooks';
+import { useUser } from '@/entities/user/hooks/useUser';
 import { useOutsideClick } from '@/shared/hooks/useOutsideClick';
 import { useSession } from '@/shared/hooks/useSession';
 import { ROUTES } from '@/shared/routes';
