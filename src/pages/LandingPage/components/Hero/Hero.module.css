@@ -5,6 +5,7 @@
 	background-blend-mode: normal;
 	background-size: cover;
 	background-position: 0% 85%;
+	margin: calc(-1 * var(--spacing-16)) calc(-1 * var(--spacing-12));
 }
 
 html[data-theme='dark'] .heroWrapper {

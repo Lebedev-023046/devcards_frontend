@@ -10,6 +10,8 @@
 	flex-direction: column;
 	background-color: var(--color-background);
 	color: var(--color-text-inverse);
+
+	padding: var(--spacing-16) var(--spacing-12);
 }
 
 @media screen and (max-width: 425px) {

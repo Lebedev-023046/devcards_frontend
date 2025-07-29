@@ -24,12 +24,15 @@ export const tokens = {
 			'button-primary': '#FEB47B',
 			'button-secondary': '#FF7E5F',
 
+			'button-primary-dark': '#D89968',
+			'button-secondary-dark': '#D96B51',
+
 			// Main body text
 			'text-primary': '#f3f2f2',
 			// Secondary text: subtitles, labels
 			'text-secondary': '#55557A',
 			// Muted text: placeholders, disabled text
-			'text-muted': '#bebebe',
+			'text-muted': '#dcdbdb',
 			// Inverse text on dark surfaces/buttons
 			'text-inverse': '#000000',
 
@@ -37,8 +40,8 @@ export const tokens = {
 			border: '#E0E0F0',
 			// Accent: sparing highlights, links, badges
 			accent: '#FFDAF4',
-			'accent-hover': '#FFA7E4',
-			'accent-active': '#FF74D5',
+
+			favorite: '#ffff00',
 
 			// Status colors
 			error: '#E53E3E', // error messages, icons
@@ -65,6 +68,9 @@ export const tokens = {
 			'button-primary': '#4FD1C5',
 			'button-secondary': '#38B2AC',
 
+			'button-primary-dark': '#43B2A7',
+			'button-secondary-dark': '#309792',
+
 			// Main text on dark bg
 			'text-primary': '#dddddd',
 			// Secondary text
@@ -78,6 +84,8 @@ export const tokens = {
 			border: '#3B3B5A',
 			// Accent highlights
 			accent: '#A78BFA',
+
+			favorite: '#ffff00',
 
 			// Status colors in dark
 			error: '#FF6B6B',

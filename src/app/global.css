@@ -39,3 +39,10 @@ h6 {
 	transition-duration: 0.15s;
 	transition-timing-function: ease;
 }
+
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+	outline: none;
+}
