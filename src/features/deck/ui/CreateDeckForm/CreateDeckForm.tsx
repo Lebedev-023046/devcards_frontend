@@ -1,5 +1,4 @@
 import { Input } from '@/shared/ui/Input';
-import { ToggleInput } from '@/shared/ui/ToggleInput';
 import styles from './CreateDeckForm.module.css';
 
 export function CreateDeckForm() {
@@ -9,7 +8,7 @@ export function CreateDeckForm() {
 			<Input inputSize='lg' placeholder='Описание' />
 
 			{/* should be checkbox */}
-			<ToggleInput type='checkbox' label='IsPublic' placeholder='IsPublic' />
+			{/* <ToggleInput type='checkbox' label='IsPublic' placeholder='IsPublic' /> */}
 
 			{/* should be upload image (draggable) */}
 			<Input inputSize='lg' placeholder='CoverImageUrl' />
