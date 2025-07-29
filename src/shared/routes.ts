@@ -1,9 +1,15 @@
 export const ROUTES = {
+	LANDING: () => '/',
+
 	SIGNIN: () => '/signin',
 	SIGNUP: () => '/signup',
-	LANDING: () => '/',
+
 	DECKS: () => '/decks',
 	DECK: (deckId: string) => `/decks/${deckId}`,
-	CARDS: (deckId: string) => `/decks/${deckId}/cards`,
+	CREATE_DECK: () => '/decks/create',
+	UPDATE_DECK: () => '/decks/update',
+
+	DECK_CARDS: (deckId: string) => `/decks/${deckId}/cards`,
+
 	PROFILE: () => '/profile',
 };

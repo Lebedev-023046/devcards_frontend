@@ -4,6 +4,10 @@ export const ENDPOINTS = {
 		signup: () => '/auth/signup',
 	},
 
+	user: {
+		getUser: (id: string) => `/users/${id}`,
+	},
+
 	decks: {
 		getPublic: () => `/decks/public`, // query params: page, limit, query?, tagId?
 		getTop: () => `/decks/top`,
@@ -26,8 +30,10 @@ export const ENDPOINTS = {
 		getAll: () => `/tags`,
 		getByDeck: (deckId: string) => `/decks/${deckId}/tags`,
 		create: () => `/tags`,
-		attachToDeck: (deckId: string, tagId: string) => `/decks/${deckId}/tags/${tagId}`,
-		detachFromDeck: (deckId: string, tagId: string) => `/decks/${deckId}/tags/${tagId}`,
+		attachToDeck: (deckId: string, tagId: string) =>
+			`/decks/${deckId}/tags/${tagId}`,
+		detachFromDeck: (deckId: string, tagId: string) =>
+			`/decks/${deckId}/tags/${tagId}`,
 	},
 
 	progress: {
