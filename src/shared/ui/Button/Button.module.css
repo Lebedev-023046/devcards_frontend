@@ -18,7 +18,8 @@
 .root {
 	position: relative;
 	display: inline-flex;
-	flex: 1 1 auto;
+	flex: 0 1 auto;
+	min-height: 2.2rem;
 	white-space: nowrap;
 	align-items: center;
 	justify-content: center;
