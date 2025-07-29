@@ -1,0 +1,72 @@
+.deckCardWrapper {
+	position: relative;
+	perspective: 150rem;
+	-moz-perspective: 150rem;
+	min-width: 200px;
+	min-height: 220px;
+
+	max-width: 420px;
+	max-height: 600px;
+
+	width: 100%;
+	height: 100%;
+}
+
+.deckSide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+
+	gap: var(--spacing-5);
+	padding: var(--spacing-6) var(--spacing-4);
+
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	border-radius: var(--radius-lg);
+
+	background-color: var(--color-surface);
+	color: var(--color-text-primary);
+
+	box-shadow: var(--shadow-lg);
+	backface-visibility: hidden;
+	transition: transform 0.8s ease;
+}
+
+.frontHeader {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.favorite {
+	flex-shrink: 0;
+	align-self: flex-start;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.back {
+	transform: rotateY(180deg);
+}
+
+.deckControl {
+	margin-top: auto;
+}
+
+.deckCardWrapper.open > .front {
+	transform: rotateY(180deg);
+}
+.deckCardWrapper.open > .back {
+	transform: rotateY(0);
+}
+
+.deckCardTitle {
+	font-size: var(--font-size-lg);
+}
+
+.rotate {
+	transform: rotate(72deg);
+}

@@ -1,0 +1,14 @@
+.sectionHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sectionControls {
+	display: flex;
+	gap: var(--spacing-4);
+}
+
+.select {
+	width: 15rem;
+}

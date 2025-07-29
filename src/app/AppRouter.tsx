@@ -10,6 +10,7 @@ const SignInPage = lazy(() => import('@/pages/SignInPage'));
 const SignUpPage = lazy(() => import('@/pages/SignUpPage'));
 const DecksPage = lazy(() => import('@/pages/DecksPage'));
 const DeckPage = lazy(() => import('@/pages/DeckPage'));
+const CreateDeckPage = lazy(() => import('@/pages/CreateDeckPage'));
 const CardsPage = lazy(() => import('@/pages/CardsPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 
@@ -43,6 +44,7 @@ export function AppRouter() {
 							<Route path='/' element={<LandingPage />} />
 							<Route element={<RequireAuth />}>
 								<Route path='/decks' element={<DecksPage />} />
+								<Route path='/decks/create' element={<CreateDeckPage />} />
 								<Route path='/decks/:deckId' element={<DeckPage />} />
 								<Route path='/decks/:deckId/cards' element={<CardsPage />} />
 								<Route path='/profile' element={<ProfilePage />} />
