@@ -1,14 +1,5 @@
 import z from 'zod';
 
-export interface AuthRequestDto {
-	name?: string;
-	email: string;
-	password: string;
-}
-export interface AuthResponseDto {
-	access_token: string;
-}
-
 // Sign Up
 export const signUpSchema = z
 	.object({

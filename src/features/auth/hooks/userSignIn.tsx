@@ -1,3 +1,5 @@
+import { authApi } from '@/entities/user/api';
+import type { AuthRequestDto } from '@/entities/user/model';
 import type { ApiResponse } from '@/shared/api/types';
 import { useSession } from '@/shared/hooks/useSession';
 import { ROUTES } from '@/shared/routes';
@@ -6,8 +8,6 @@ import { useMutation } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { authApi } from '../api';
-import type { AuthRequestDto } from '../model';
 
 export function useSignIn() {
 	const { signin } = useSession();
