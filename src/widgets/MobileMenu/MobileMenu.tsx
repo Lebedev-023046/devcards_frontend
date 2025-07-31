@@ -1,7 +1,7 @@
 import { useUser } from '@/entities/user/hooks/useUser';
 import { useSession } from '@/shared/hooks/useSession';
 import { ROUTES } from '@/shared/routes';
-import { Button } from '@/shared/ui/Button';
+import { Box, Button, ButtonGroup, IconButton } from '@chakra-ui/react';
 import cn from 'clsx';
 import {
 	EyeIcon,
@@ -33,30 +33,29 @@ export function MobileMenu() {
 
 	return (
 		<div className={styles.mobileMenuWrapper}>
-			<Button
+			<IconButton
+				_icon={{ w: '2rem', h: '2rem' }}
+				bg='transparent'
+				color={'text-primary'}
 				className={cn(styles.menuButton, isOpen && styles.rotate)}
 				variant='ghost'
-				size='xs'
-				iconOnly
 				aria-label='Toggle theme'
-				startIcon={
-					isOpen ? (
-						<X size='2rem' color='var(--color-text-primary)' />
-					) : (
-						<MenuIcon size='2rem' color='var(--color-text-primary)' />
-					)
-				}
 				onClick={() => setIsOpen(p => !p)}
 			>
-				Меню
-			</Button>
+				{isOpen ? <X size='2rem' /> : <MenuIcon size='2rem' />}
+			</IconButton>
 			<>
 				<div
 					className={cn(styles.backdrop, isOpen && styles.backdropOpen)}
 					onClick={() => setIsOpen(false)}
 					aria-hidden='true'
 				/>
-				<nav className={cn(styles.menu, isOpen && styles.menuOpen)}>
+				<Box
+					as='nav'
+					bg='bg-accent'
+					color='text'
+					className={cn(styles.menu, isOpen && styles.menuOpen)}
+				>
 					<div className={styles.menuContent}>
 						{!isAuth && (
 							<>
@@ -84,53 +83,42 @@ export function MobileMenu() {
 								</>
 							) : null}
 						</ul>
-						<div className={styles.controls}>
+						<ButtonGroup className={styles.controls}>
 							{isAuth ? (
 								<Button
 									className={styles.logoutButton}
-									as={Link}
-									to={ROUTES.SIGNIN()}
-									startIcon={<LogOut />}
-									animationType='ripple'
+									bg={'button-secondary'}
+									w={'100%'}
+									asChild
 									onClick={signout}
-									fullWidth
 								>
-									Выйти
+									<Link to={ROUTES.SIGNIN()}>
+										<LogOut /> Выйти
+									</Link>
 								</Button>
 							) : (
 								<>
-									<Button
-										variant='secondary'
-										as={Link}
-										to={ROUTES.DECKS()}
-										startIcon={<EyeIcon />}
-										fullWidth
-									>
-										Публичные колоды
+									<Button w={'100%'} bg={'button-primary'} asChild>
+										<Link to={ROUTES.DECKS()}>
+											<EyeIcon />
+											Публичные колоды
+										</Link>
 									</Button>
-									<Button
-										as={Link}
-										to={ROUTES.SIGNUP()}
-										startIcon={<KeyRound />}
-										animationType='ripple'
-										fullWidth
-									>
-										Создать аккаунт
+									<Button w={'100%'} bg={'button-secondary'} asChild>
+										<Link to={ROUTES.SIGNUP()}>
+											<KeyRound /> Создать аккаунт
+										</Link>
 									</Button>
-									<Button
-										as={Link}
-										to={ROUTES.SIGNIN()}
-										startIcon={<LogIn />}
-										animationType='ripple'
-										fullWidth
-									>
-										Войти
+									<Button w={'100%'} bg={'button-tertiary'} asChild>
+										<Link to={ROUTES.SIGNIN()}>
+											<LogIn /> Войти
+										</Link>
 									</Button>
 								</>
 							)}
-						</div>
+						</ButtonGroup>
 					</div>
-				</nav>
+				</Box>
 			</>
 		</div>
 	);

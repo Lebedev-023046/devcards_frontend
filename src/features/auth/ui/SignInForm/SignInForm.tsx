@@ -1,6 +1,12 @@
 import { ROUTES } from '@/shared/routes';
-import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
+import { Field } from '@/shared/ui/field';
+import {
+	Button,
+	Heading,
+	IconButton,
+	Input,
+	InputGroup,
+} from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, KeyRound, Mail } from 'lucide-react';
 import { useState } from 'react';
@@ -28,39 +34,75 @@ export function SignInForm() {
 		signIn({ email, password });
 	};
 
+	console.log({ errors });
+
 	return (
 		<div className={styles.formWrapper}>
-			<h1 className={styles.formTitle}>Авторизация</h1>
+			<Heading
+				as='h1'
+				mb={6}
+				textAlign={'center'}
+				color={'text-secondary'}
+				fontSize={'2rem'}
+			>
+				Авторизация
+			</Heading>
 			<div>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className={styles.formFieldsWrapper}
 				>
-					<Input
-						{...register('email')}
-						placeholder='you@example.com'
-						inputSize='lg'
-						error={!!errors.email}
-						helperText={errors.email?.message}
-						startIcon={<Mail />}
-					/>
-					<Input
-						{...register('password')}
-						type={shouldShowPassword ? 'text' : 'password'}
-						placeholder='пароль'
-						inputSize='lg'
-						error={!!errors.password}
-						helperText={errors.password?.message}
-						endIcon={shouldShowPassword ? <Eye /> : <EyeOff />}
-						onEndIconClick={() => setShouldShowPassword(s => !s)}
-						startIcon={<KeyRound />}
-					/>
+					<Field
+						invalid={!!errors.email?.message}
+						label='Email'
+						errorText={errors.email?.message}
+					>
+						<InputGroup startElement={<Mail />}>
+							<Input
+								{...register('email')}
+								placeholder='me@example.com'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
+
+					<Field
+						invalid={!!errors.password?.message}
+						label='Пароль'
+						errorText={errors.password?.message}
+					>
+						<InputGroup
+							startElement={<KeyRound />}
+							endElement={
+								<IconButton
+									_icon={{ w: '1.5rem', h: '1.5rem' }}
+									bg='transparent'
+									variant='ghost'
+									aria-label={
+										shouldShowPassword ? 'Скрыть пароль' : 'Показать пароль'
+									}
+									onClick={() => setShouldShowPassword(prev => !prev)}
+								>
+									{shouldShowPassword ? <Eye /> : <EyeOff />}
+								</IconButton>
+							}
+						>
+							<Input
+								{...register('password')}
+								type={shouldShowPassword ? 'text' : 'password'}
+								placeholder='пароль'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
+
 					<Button
+						fontSize='1.25rem'
+						bg={'button-primary'}
 						loading={isSubmitting}
-						size='lg'
 						type='submit'
-						animationType='ripple'
-						fullWidth
 					>
 						Войти
 					</Button>

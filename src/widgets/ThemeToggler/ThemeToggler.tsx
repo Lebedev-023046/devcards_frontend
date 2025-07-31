@@ -1,35 +1,29 @@
-import { useTheme } from '@/shared/styles/useTheme';
-import { Button } from '@/shared/ui/Button';
+import { useColorMode } from '@/shared/styles/color-mode';
+
+import { IconButton } from '@chakra-ui/react';
 import cn from 'clsx';
 import styles from './ThemeToggler.module.css';
 import Moon from '/header/moon.svg';
 import Sun from '/header/sun.svg';
 
 export function ThemeToggler() {
-	const { theme, setTheme } = useTheme();
+	const { colorMode, toggleColorMode } = useColorMode();
 
-	const isDark = theme === 'dark';
-
-	const onClick = () => {
-		setTheme(theme === 'light' ? 'dark' : 'light');
-	};
+	const isDark = colorMode === 'dark';
 
 	return (
-		<Button
+		<IconButton
 			variant='ghost'
 			size='xs'
-			iconOnly
+			bg='transparent'
 			aria-label='Toggle theme'
-			startIcon={
-				<img
-					className={cn(styles.toggleIcon, !isDark && styles.rotate)}
-					src={isDark ? Moon : Sun}
-					alt='toggle theme'
-				/>
-			}
-			onClick={onClick}
+			onClick={toggleColorMode}
 		>
-			Toggle Theme
-		</Button>
+			<img
+				className={cn(styles.toggleIcon, !isDark && styles.rotate)}
+				src={isDark ? Moon : Sun}
+				alt='toggle theme'
+			/>
+		</IconButton>
 	);
 }

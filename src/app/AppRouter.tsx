@@ -1,4 +1,4 @@
-import { useTheme } from '@/shared/styles/useTheme';
+import { useColorMode } from '@/shared/styles/color-mode';
 import { AuthLayout } from '@/shared/ui/Layout/AuthLayout';
 import { BaseLayout } from '@/shared/ui/Layout/BaseLayout';
 import { lazy, Suspense } from 'react';
@@ -19,7 +19,7 @@ const RequireAuth = lazy(
 );
 
 export function AppRouter() {
-	const { theme } = useTheme();
+	const { colorMode } = useColorMode();
 
 	return (
 		<>
@@ -30,7 +30,7 @@ export function AppRouter() {
 				newestOnTop
 				closeOnClick
 				pauseOnHover
-				theme={theme}
+				theme={colorMode}
 			/>
 			<BrowserRouter>
 				<Suspense fallback={<div>Loading...</div>}>

@@ -1,6 +1,12 @@
 import { ROUTES } from '@/shared/routes';
-import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
+import { Field } from '@/shared/ui/field';
+import {
+	Button,
+	Heading,
+	IconButton,
+	Input,
+	InputGroup,
+} from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CircleUser, Eye, EyeOff, KeyRound, Mail } from 'lucide-react';
 import { useState } from 'react';
@@ -32,56 +38,115 @@ export function SignUpForm() {
 
 	return (
 		<div className={styles.formWrapper}>
-			<h1 className={styles.formTitle}>Регистрация</h1>
+			<Heading
+				as='h1'
+				mb={6}
+				textAlign={'center'}
+				color={'text-secondary'}
+				fontSize={'2rem'}
+			>
+				Регистрация
+			</Heading>
 			<div>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className={styles.formFieldsWrapper}
 				>
-					<Input
-						{...register('name')}
-						placeholder='ваше имя'
-						inputSize='lg'
-						error={!!errors.name}
-						helperText={errors.name?.message}
-						startIcon={<CircleUser />}
-					/>
-					<Input
-						{...register('email')}
-						placeholder='you@example.com'
-						inputSize='lg'
-						error={!!errors.email}
-						helperText={errors.email?.message}
-						startIcon={<Mail />}
-					/>
-					<Input
-						{...register('password')}
-						type={shouldShowPassword ? 'text' : 'password'}
-						placeholder='придумайте надежный пароль'
-						inputSize='lg'
-						error={!!errors.password}
-						helperText={errors.password?.message}
-						endIcon={shouldShowPassword ? <Eye /> : <EyeOff />}
-						onEndIconClick={() => setShouldShowPassword(s => !s)}
-						startIcon={<KeyRound />}
-					/>
-					<Input
-						{...register('confirmPassword')}
-						type={shouldShowConfirmPassword ? 'text' : 'password'}
-						placeholder='повторите пароль'
-						inputSize='lg'
-						error={!!errors.confirmPassword}
-						helperText={errors.confirmPassword?.message}
-						endIcon={shouldShowConfirmPassword ? <Eye /> : <EyeOff />}
-						onEndIconClick={() => setShouldShowConfirmPassword(s => !s)}
-						startIcon={<KeyRound />}
-					/>
+					<Field
+						invalid={!!errors.name?.message}
+						label='Имя'
+						errorText={errors.name?.message}
+					>
+						<InputGroup startElement={<CircleUser />}>
+							<Input
+								{...register('name')}
+								placeholder='ваше имя'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
+					<Field
+						invalid={!!errors.email?.message}
+						label='Email'
+						errorText={errors.email?.message}
+					>
+						<InputGroup startElement={<Mail />}>
+							<Input
+								{...register('email')}
+								placeholder='me@example.com'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
+					<Field
+						invalid={!!errors.password?.message}
+						label='Пароль'
+						errorText={errors.password?.message}
+					>
+						<InputGroup
+							startElement={<KeyRound />}
+							endElement={
+								<IconButton
+									_icon={{ w: '1.5rem', h: '1.5rem' }}
+									bg='transparent'
+									variant='ghost'
+									aria-label={
+										shouldShowPassword ? 'Скрыть пароль' : 'Показать пароль'
+									}
+									onClick={() => setShouldShowPassword(prev => !prev)}
+								>
+									{shouldShowPassword ? <Eye /> : <EyeOff />}
+								</IconButton>
+							}
+						>
+							<Input
+								{...register('password')}
+								type={shouldShowPassword ? 'text' : 'password'}
+								placeholder='пароль'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
+					<Field
+						invalid={!!errors.confirmPassword?.message}
+						label='Повторите пароль'
+						errorText={errors.confirmPassword?.message}
+					>
+						<InputGroup
+							startElement={<KeyRound />}
+							endElement={
+								<IconButton
+									_icon={{ w: '1.5rem', h: '1.5rem' }}
+									bg='transparent'
+									variant='ghost'
+									aria-label={
+										shouldShowConfirmPassword
+											? 'Скрыть пароль'
+											: 'Показать пароль'
+									}
+									onClick={() => setShouldShowConfirmPassword(prev => !prev)}
+								>
+									{shouldShowPassword ? <Eye /> : <EyeOff />}
+								</IconButton>
+							}
+						>
+							<Input
+								{...register('confirmPassword')}
+								type={shouldShowPassword ? 'text' : 'password'}
+								placeholder='повторите пароль'
+								_placeholder={{ color: 'text-secondary' }}
+								borderColor={'text-secondary'}
+							/>
+						</InputGroup>
+					</Field>
 					<Button
 						loading={isSubmitting}
+						bg={'button-primary'}
 						size='lg'
 						type='submit'
-						animationType='ripple'
-						fullWidth
 					>
 						Создать аккаунт
 					</Button>

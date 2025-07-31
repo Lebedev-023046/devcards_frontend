@@ -1,6 +1,5 @@
-import { Button } from '@/shared/ui/Button';
 import cn from 'clsx';
-import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { useState } from 'react';
 import styles from './DeckCard.module.css';
 
@@ -25,26 +24,26 @@ export function DeckCard() {
 				<div>Карт в колоде: 22</div>
 				<div>Теги: здоровье, психология</div>
 
-				<Button
+				{/* <Button
 					className={styles.deckControl}
 					animationType='ripple'
 					endIcon={<ArrowRight />}
 					onClick={() => setIsInfoOpen(true)}
 				>
 					Подробнее
-				</Button>
+				</Button> */}
 			</div>
 			<div className={cn(styles.deckSide, styles.back)}>
 				<p>Описание колоды</p>
 				<p>Сложность колоды</p>
-				<Button
+				{/* <Button
 					className={styles.deckControl}
 					animationType='ripple'
 					startIcon={<ArrowLeft />}
 					onClick={() => setIsInfoOpen(false)}
 				>
 					Вернуться
-				</Button>
+				</Button> */}
 			</div>
 		</div>
 	);

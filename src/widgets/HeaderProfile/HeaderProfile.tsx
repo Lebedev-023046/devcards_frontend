@@ -2,7 +2,7 @@ import { useUser } from '@/entities/user/hooks/useUser';
 import { useOutsideClick } from '@/shared/hooks/useOutsideClick';
 import { useSession } from '@/shared/hooks/useSession';
 import { ROUTES } from '@/shared/routes';
-import { Button } from '@/shared/ui/Button';
+import { Box, Button, Heading } from '@chakra-ui/react';
 import cn from 'clsx';
 import { EyeIcon, KeyRound, LogIn, LogOut, User } from 'lucide-react';
 import { useRef, useState, type RefObject } from 'react';
@@ -23,18 +23,20 @@ export function HeaderProfile() {
 
 	return (
 		<>
-			<div className={styles.headerProfileWrapper}>
+			<Box color='text-primary' className={styles.headerProfileWrapper}>
 				<div ref={profileIconRef}>
 					<User onClick={() => setIsModalOpen(!isModalOpen)} />
 				</div>
 
-				<div
+				<Box
+					bg='bg-accent'
+					color='text-primary'
 					ref={ref}
 					className={cn(styles.modal, isModalOpen && styles.modalOpen)}
 				>
-					<h4 className={styles.title}>
+					<Heading className={styles.title}>
 						Добро пожаловать, {user?.name ?? 'гость' + '!'}
-					</h4>
+					</Heading>
 					{!isAuth && (
 						<p className={styles.subtitle}>
 							Создавайте карточки, тестируйте себя и следите за прогрессом!
@@ -44,74 +46,55 @@ export function HeaderProfile() {
 					<div className={styles.actions}>
 						{isAuth ? (
 							<div className={styles.userActions}>
-								<Button
-									variant='secondary'
-									as={Link}
-									to={ROUTES.DECKS()}
-									startIcon={<img src={MyDecks} alt='to-my-decks-icon' />}
-									fullWidth
-								>
-									Мои колоды
+								<Button flex={1} asChild bg={'button-tertiary'}>
+									<Link to={ROUTES.DECKS()}>
+										<img src={MyDecks} alt='to-my-decks-icon' /> Мои колоды
+									</Link>
 								</Button>
-								<Button
-									variant='secondary'
-									as={Link}
-									to={ROUTES.PROFILE()}
-									startIcon={<User />}
-									fullWidth
-								>
-									Профиль
+								<Button flex={1} asChild bg={'button-tertiary'}>
+									<Link to={ROUTES.PROFILE()}>
+										<User /> Профиль
+									</Link>
 								</Button>
 							</div>
 						) : (
-							<Button
-								variant='secondary'
-								as={Link}
-								to={ROUTES.DECKS()}
-								startIcon={<EyeIcon />}
-							>
-								Просмотреть публичные колоды
+							<Button bg={'button-primary'} asChild>
+								<Link to={ROUTES.DECKS()}>
+									<EyeIcon /> Просмотреть публичные колоды
+								</Link>
 							</Button>
 						)}
 
 						<div className={styles.authBlock}>
 							{isAuth ? (
 								<Button
-									as={Link}
-									to={ROUTES.SIGNIN()}
-									startIcon={<LogOut />}
-									animationType='ripple'
+									flex={1}
+									bg={'button-secondary'}
 									onClick={signout}
-									fullWidth
+									asChild
 								>
-									Выйти
+									<Link to={ROUTES.SIGNIN()}>
+										<LogOut /> Выйти
+									</Link>
 								</Button>
 							) : (
 								<>
-									<Button
-										as={Link}
-										to={ROUTES.SIGNIN()}
-										startIcon={<LogIn />}
-										animationType='ripple'
-										fullWidth
-									>
-										Войти
+									<Button bg={'button-tertiary'} flex={1} asChild>
+										<Link to={ROUTES.SIGNIN()}>
+											<LogIn /> Войти
+										</Link>
 									</Button>
-									<Button
-										as={Link}
-										to={ROUTES.SIGNUP()}
-										startIcon={<KeyRound />}
-										animationType='ripple'
-										fullWidth
-									>
-										Создать аккаунт
+									<Button bg={'button-secondary'} flex={1} asChild>
+										<Link to={ROUTES.SIGNUP()}>
+											<KeyRound /> Создать аккаунт
+										</Link>
 									</Button>
 								</>
 							)}
 						</div>
 					</div>
-				</div>
-			</div>
+				</Box>
+			</Box>
 		</>
 	);
 }

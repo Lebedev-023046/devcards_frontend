@@ -5,22 +5,19 @@
 	justify-content: center;
 	text-align: center;
 	flex: 1 1 auto;
-	width: var(--spacing-12);
-	height: var(--spacing-12);
-	background-color: var(--color-surface);
-	border-radius: var(--radius-rounded);
-	color: var(--color-text-primary);
+	width: 2.5rem;
+	height: 2.5rem;
 	cursor: pointer;
 }
 
 .modal {
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-4);
+	gap: 1rem;
 
 	text-align: left;
 	position: absolute;
-	top: var(--spacing-24);
+	top: 6rem;
 	right: 0;
 
 	opacity: 0;
@@ -29,15 +26,9 @@
 	transform-origin: top right;
 
 	z-index: 1;
-	background-color: var(--color-primary);
-	color: var(--color-text-primary);
-	border-radius: var(--radius-md);
-	/* border-top-right-radius: 0; */
-	padding: var(--spacing-8) var(--spacing-12);
-
-	/* min-width: 500px; */
+	border-radius: 0.5rem;
+	padding: 1.5rem 2.5rem;
 	width: max-content;
-
 	transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
@@ -48,24 +39,24 @@
 }
 
 .subtitle {
-	font-size: var(--font-size-md);
+	font-size: 1rem;
 }
 
 .actions {
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-4);
+	gap: 1rem;
 }
 
 .userActions {
 	display: flex;
-	gap: var(--spacing-4);
+	gap: 1rem;
 }
 
 .authBlock {
 	display: flex;
 	align-items: center;
-	gap: var(--spacing-3);
+	gap: 0.75rem;
 }
 
 @media screen and (max-width: 768px) {

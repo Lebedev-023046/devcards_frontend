@@ -1,18 +1,11 @@
+import { Box } from '@chakra-ui/react';
 import { Hero } from './components/Hero';
 
 function LandingPage() {
 	return (
-		<div
-			className='landing-page'
-			style={{
-				height: '100%',
-				display: 'flex',
-				flexDirection: 'column',
-				flex: 1,
-			}}
-		>
+		<Box h={'100%'} display={'flex'} flexDirection={'column'} flex={1}>
 			<Hero />
-		</div>
+		</Box>
 	);
 }
 

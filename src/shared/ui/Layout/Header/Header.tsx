@@ -1,35 +1,43 @@
+import { ROUTES } from '@/shared/routes';
 import { HeaderProfile } from '@/widgets/HeaderProfile';
 import { MobileMenu } from '@/widgets/MobileMenu';
 import { ThemeToggler } from '@/widgets/ThemeToggler';
+import { Box, Heading, Input, InputGroup } from '@chakra-ui/react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Link } from 'react-router-dom';
-import { Input } from '../../Input';
 import styles from './Header.module.css';
 import Logo from '/header/logo.svg';
 import Search from '/header/search.svg';
 
 export function Header() {
 	return (
-		<div className={styles.root}>
-			<Link to={'/'} className={styles.logoWrapper}>
+		<Box bg={'bg-accent'} color='text' as='header' className={styles.root}>
+			<Link to={ROUTES.DECKS()} className={styles.logoWrapper}>
 				<img src={Logo} className={styles.logoImage} />
-				<h1 className={styles.logoTitle}>Deckable</h1>
+				<Heading as='h1' className={styles.logoTitle}>
+					Deckable
+				</Heading>
 			</Link>
 
 			<div className={styles.controls}>
-				<Input
-					className={styles.search}
-					aria-label='Search'
-					placeholder='Найти колоду'
-					startIcon={
+				<InputGroup
+					startElement={
 						<img src={Search} className={styles.searchIcon} alt='search-icon' />
 					}
-				/>
+				>
+					<Input
+						size='sm'
+						className={styles.search}
+						_placeholder={{ color: 'text', fontWeight: '100' }}
+						aria-label='Search'
+						placeholder='Найти колоду'
+					/>
+				</InputGroup>
 
 				<ThemeToggler />
 				<HeaderProfile />
 				<MobileMenu />
 			</div>
-		</div>
+		</Box>
 	);
 }

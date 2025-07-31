@@ -1,5 +1,5 @@
 import { ROUTES } from '@/shared/routes';
-import { Button } from '@/shared/ui/Button';
+import { Box, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 import ToHome from '/hero/to-home.svg';
@@ -7,7 +7,7 @@ import ToHome from '/hero/to-home.svg';
 export function Hero() {
 	return (
 		<div className={styles.heroWrapper}>
-			<div className={styles.contentWrapper}>
+			<Box color='text-primary' className={styles.contentWrapper}>
 				<h1 className={styles.title}>Deckable</h1>
 				<h2 className={styles.subtitle}>
 					Создавайте и учитесь по собственным карточкам
@@ -16,15 +16,18 @@ export function Hero() {
 					Интерактивная проверка GPT, статистика прогресса, кастомные колоды
 				</h3>
 				<Button
-					as={Link}
-					to={ROUTES.DECKS()}
-					className={styles.button}
-					size='lg'
-					endIcon={<img src={ToHome} alt='to-home-icon' />}
+					size='2xl'
+					maxWidth='300px'
+					width='100%'
+					rounded='xl'
+					asChild
+					bg='button-tertiary-gradient'
 				>
-					На главную
+					<Link to={ROUTES.DECKS()}>
+						<img src={ToHome} alt='to-home-icon' /> На главную
+					</Link>
 				</Button>
-			</div>
+			</Box>
 		</div>
 	);
 }
