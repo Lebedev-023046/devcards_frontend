@@ -13,10 +13,8 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
 		const { label, children, helperText, errorText, optionalText, ...rest } =
 			props;
 
-		console.log('ERROR TEXT', errorText);
-
 		return (
-			<ChakraField.Root ref={ref} {...rest}>
+			<ChakraField.Root ref={ref} {...rest} color={'text-primary'}>
 				{label && (
 					<ChakraField.Label>
 						{label}
@@ -29,7 +27,9 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
 				)}
 
 				{errorText && (
-					<ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+					<ChakraField.ErrorText color={'error'} fontSize='sm'>
+						{errorText}
+					</ChakraField.ErrorText>
 				)}
 			</ChakraField.Root>
 		);

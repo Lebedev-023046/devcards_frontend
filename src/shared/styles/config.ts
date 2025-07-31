@@ -18,6 +18,8 @@ const colors = {
 
 		'button-tertiary': '#bd75f0',
 		'button-tertiary-2': '#D095F5',
+
+		error: '#ff3134',
 	},
 	dark: {
 		'bg-primary': '#1A1A2E',
@@ -36,6 +38,8 @@ const colors = {
 
 		'button-tertiary': '#4d5ad1',
 		'button-tertiary-2': '#7A7Be8',
+
+		error: '#ff4d4f',
 	},
 };
 
@@ -128,7 +132,7 @@ const config = defineConfig({
 				'button-primary-gradient': {
 					value: {
 						base: `linear-gradient(135deg, ${colors.light['button-primary-2']} 0%, ${colors.light['button-primary']} 100%)`,
-						_dark: `linear-gradient(135deg, ${colors.dark['button-primary-2']} 0%, #${colors.dark['button-primary']} 100%)`,
+						_dark: `linear-gradient(135deg, ${colors.dark['button-primary-2']} 0%, ${colors.dark['button-primary']} 100%)`,
 					},
 				},
 
@@ -142,7 +146,7 @@ const config = defineConfig({
 				'button-secondary-gradient': {
 					value: {
 						base: `linear-gradient(135deg, ${colors.light['button-secondary-2']} 0%, ${colors.light['button-secondary']} 100%)`,
-						_dark: `linear-gradient(135deg, ${colors.dark['button-secondary-2']} 0%, #${colors.dark['button-secondary']} 100%)`,
+						_dark: `linear-gradient(135deg, ${colors.dark['button-secondary-2']} 0%, ${colors.dark['button-secondary']} 100%)`,
 					},
 				},
 
@@ -156,7 +160,7 @@ const config = defineConfig({
 				'button-tertiary-gradient': {
 					value: {
 						base: `linear-gradient(135deg, ${colors.light['button-tertiary-2']} 0%, ${colors.light['button-tertiary']} 100%)`,
-						_dark: `linear-gradient(135deg, ${colors.dark['button-tertiary-2']} 0%, #${colors.dark['button-tertiary']} 100%)`,
+						_dark: `linear-gradient(135deg, ${colors.dark['button-tertiary-2']} 0%, ${colors.dark['button-tertiary']} 100%)`,
 					},
 				},
 
@@ -165,6 +169,13 @@ const config = defineConfig({
 					value: {
 						base: colors.light['text-primary'],
 						_dark: colors.dark['text-primary'],
+					},
+				},
+
+				error: {
+					value: {
+						base: colors.light.error,
+						_dark: colors.dark.error,
 					},
 				},
 			},

@@ -19,11 +19,11 @@
 
 .link {
 	position: relative;
-	color: var(--color-primary);
 	font-weight: 500;
 	font-size: 1rem;
 	cursor: pointer;
 	font-style: italic;
+	color: var(--chakra-colors-bg-primary);
 }
 
 .link::before {

@@ -1,6 +1,7 @@
 import { ROUTES } from '@/shared/routes';
 import { Field } from '@/shared/ui/field';
 import {
+	Box,
 	Button,
 	Heading,
 	IconButton,
@@ -42,7 +43,7 @@ export function SignUpForm() {
 				as='h1'
 				mb={6}
 				textAlign={'center'}
-				color={'text-secondary'}
+				color={'text-primary'}
 				fontSize={'2rem'}
 			>
 				Регистрация
@@ -61,8 +62,11 @@ export function SignUpForm() {
 							<Input
 								{...register('name')}
 								placeholder='ваше имя'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -75,8 +79,11 @@ export function SignUpForm() {
 							<Input
 								{...register('email')}
 								placeholder='me@example.com'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -105,8 +112,11 @@ export function SignUpForm() {
 								{...register('password')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='пароль'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -137,8 +147,11 @@ export function SignUpForm() {
 								{...register('confirmPassword')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='повторите пароль'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -151,12 +164,12 @@ export function SignUpForm() {
 						Создать аккаунт
 					</Button>
 				</form>
-				<div className={styles.footerText}>
+				<Box color='text-primary' className={styles.footerText}>
 					Уже есть аккаунт?{' '}
 					<Link className={styles.link} to={ROUTES.SIGNIN()}>
 						Войти
 					</Link>
-				</div>
+				</Box>
 			</div>
 		</div>
 	);

@@ -1,6 +1,7 @@
 import { ROUTES } from '@/shared/routes';
 import { Field } from '@/shared/ui/field';
 import {
+	Box,
 	Button,
 	Heading,
 	IconButton,
@@ -34,15 +35,13 @@ export function SignInForm() {
 		signIn({ email, password });
 	};
 
-	console.log({ errors });
-
 	return (
 		<div className={styles.formWrapper}>
 			<Heading
 				as='h1'
 				mb={6}
 				textAlign={'center'}
-				color={'text-secondary'}
+				color={'text-primary'}
 				fontSize={'2rem'}
 			>
 				Авторизация
@@ -61,8 +60,11 @@ export function SignInForm() {
 							<Input
 								{...register('email')}
 								placeholder='me@example.com'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -77,7 +79,6 @@ export function SignInForm() {
 							endElement={
 								<IconButton
 									_icon={{ w: '1.5rem', h: '1.5rem' }}
-									bg='transparent'
 									variant='ghost'
 									aria-label={
 										shouldShowPassword ? 'Скрыть пароль' : 'Показать пароль'
@@ -92,8 +93,11 @@ export function SignInForm() {
 								{...register('password')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='пароль'
-								_placeholder={{ color: 'text-secondary' }}
-								borderColor={'text-secondary'}
+								rounded='lg'
+								bg={'bg-secondary'}
+								color={'text-secondary'}
+								_placeholder={{ color: 'surface' }}
+								borderColor='transparent'
 							/>
 						</InputGroup>
 					</Field>
@@ -107,12 +111,12 @@ export function SignInForm() {
 						Войти
 					</Button>
 				</form>
-				<div className={styles.footerText}>
+				<Box color='text-primary' className={styles.footerText}>
 					Нет аккаунта?{' '}
 					<Link className={styles.link} to={ROUTES.SIGNUP()}>
 						Зарегистрироваться
 					</Link>
-				</div>
+				</Box>
 			</div>
 		</div>
 	);
