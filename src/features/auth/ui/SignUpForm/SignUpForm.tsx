@@ -1,5 +1,5 @@
 import { ROUTES } from '@/shared/routes';
-import { Field } from '@/shared/ui/field';
+import { Field, inputDefaultProps } from '@/shared/ui/field';
 import {
 	Box,
 	Button,
@@ -62,11 +62,7 @@ export function SignUpForm() {
 							<Input
 								{...register('name')}
 								placeholder='ваше имя'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>
@@ -79,11 +75,7 @@ export function SignUpForm() {
 							<Input
 								{...register('email')}
 								placeholder='me@example.com'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>
@@ -112,11 +104,7 @@ export function SignUpForm() {
 								{...register('password')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='пароль'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>
@@ -147,11 +135,7 @@ export function SignUpForm() {
 								{...register('confirmPassword')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='повторите пароль'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>

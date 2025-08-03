@@ -26,8 +26,9 @@ export const ENDPOINTS = {
 		remove: (id: string) => `/cards/${id}`,
 	},
 
-	deckTags: {
-		getAll: () => `/tags`,
+	tags: {
+		getAll: ({ page = 1, limit = 10, search = '' }) =>
+			`/tags?page=${page}&limit=${limit}&search=${encodeURIComponent(search)}`,
 		getByDeck: (deckId: string) => `/decks/${deckId}/tags`,
 		create: () => `/tags`,
 		attachToDeck: (deckId: string, tagId: string) =>

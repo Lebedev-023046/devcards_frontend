@@ -1,15 +1,16 @@
 import { ENDPOINTS } from '@/shared/api/endpoints';
 import type { ApiResponse } from '@/shared/api/types';
 import { api } from '@/shared/lib/api';
-import type { Tag } from './model';
+import type { TagResponse } from './model';
 
 export const tagsApi = {
-	async getAllTags(
-		page: number = 1,
-		limit: number = 10,
-	): Promise<ApiResponse<Tag>> {
-		const data = await api.get<ApiResponse<Tag>>(
-			ENDPOINTS.tags.getAll(page, limit),
+	async getAllTags({
+		page = 1,
+		limit = 10,
+		search = '',
+	}): Promise<ApiResponse<TagResponse>> {
+		const data = await api.get<ApiResponse<TagResponse>>(
+			ENDPOINTS.tags.getAll({ page, limit, search }),
 		);
 
 		return data.data;

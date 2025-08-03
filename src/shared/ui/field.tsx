@@ -8,6 +8,14 @@ export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
 	optionalText?: React.ReactNode;
 }
 
+export const inputDefaultProps = {
+	rounded: 'lg',
+	bg: 'bg-secondary',
+	color: 'text-secondary',
+	_placeholder: { color: 'surface' },
+	borderColor: 'transparent',
+};
+
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
 	function Field(props, ref) {
 		const { label, children, helperText, errorText, optionalText, ...rest } =

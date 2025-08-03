@@ -41,3 +41,7 @@ input:focus,
 select:focus {
 	outline: none;
 }
+
+.chakra-file-upload__item > * {
+	color: var(--chakra-colors-text-primary);
+}

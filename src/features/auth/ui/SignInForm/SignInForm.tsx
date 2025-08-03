@@ -1,5 +1,5 @@
 import { ROUTES } from '@/shared/routes';
-import { Field } from '@/shared/ui/field';
+import { Field, inputDefaultProps } from '@/shared/ui/field';
 import {
 	Box,
 	Button,
@@ -60,11 +60,7 @@ export function SignInForm() {
 							<Input
 								{...register('email')}
 								placeholder='me@example.com'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>
@@ -93,11 +89,7 @@ export function SignInForm() {
 								{...register('password')}
 								type={shouldShowPassword ? 'text' : 'password'}
 								placeholder='пароль'
-								rounded='lg'
-								bg={'bg-secondary'}
-								color={'text-secondary'}
-								_placeholder={{ color: 'surface' }}
-								borderColor='transparent'
+								{...inputDefaultProps}
 							/>
 						</InputGroup>
 					</Field>

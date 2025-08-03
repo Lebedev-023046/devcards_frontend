@@ -1,10 +1,12 @@
 import { CreateDeckForm } from '@/features/deck/ui/CreateDeckForm';
-import styles from './CreateDeckPage.module.css';
+import { Heading } from '@chakra-ui/react';
 
 function CreateDeckPage() {
 	return (
 		<section>
-			<h1 className={styles.title}>Создать колоду</h1>
+			<Heading as={'h1'} color={'text-primary'}>
+				Создать колоду
+			</Heading>
 			<CreateDeckForm />
 		</section>
 	);

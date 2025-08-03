@@ -71,6 +71,9 @@ importers:
       react-select:
         specifier: ^5.10.2
         version: 5.10.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-select-async-paginate:
+        specifier: ^0.7.11
+        version: 0.7.11(@types/react@19.1.8)(react-select@5.10.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       react-toastify:
         specifier: ^11.0.5
         version: 11.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -756,6 +759,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@seznam/compose-react-refs@1.0.6':
+    resolution: {integrity: sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==}
+
   '@sindresorhus/merge-streams@2.3.0':
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
@@ -1060,6 +1066,11 @@ packages:
 
   '@vitest/utils@3.2.4':
     resolution: {integrity: sha512-fB2V0JFrQSMsCo9HiSq3Ezpdv4iYaXRG1Sx8edX3MwxfyNn83mKiGzOcH+Fkxt4MHxr3y42fQi1oeAInqgX2QA==}
+
+  '@vtaits/use-lazy-ref@0.1.4':
+    resolution: {integrity: sha512-pdHe8k2WLIm8ccVfNw3HzeTCkifKKjVQ3hpiM7/rMynCp8nev715wrY2RCYnbeowNvekWqpGdHtrWKfCDocC6g==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@zag-js/accordion@1.21.0':
     resolution: {integrity: sha512-YuuQs72AmA52Hn30l3Q8KyFDb75g9glFV7AZkUq8V52vtUsdz2PfJye1FPD06M2dnnhHjEbdTQch6Qwwe5ApBA==}
@@ -2087,6 +2098,9 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
+  krustykrab@1.1.0:
+    resolution: {integrity: sha512-xpX9MPbw+nJseewe6who9Oq46RQwrBfps+dO/N4fSjJhsf2+y4XWC2kz46oBGX8yzMHyYJj35ug0X5s5yxB6tA==}
+
   lazy-cache@0.2.7:
     resolution: {integrity: sha512-gkX52wvU/R8DVMMt78ATVPFMJqfW8FPz1GZ1sVHBVQHmu/WvhIWE4cE1GBzhJNFicDeYhnwp6Rl35BcAIM3YOQ==}
     engines: {node: '>=0.10.0'}
@@ -2478,6 +2492,12 @@ packages:
       react-dom:
         optional: true
 
+  react-select-async-paginate@0.7.11:
+    resolution: {integrity: sha512-AjtCLPMk5DLNgygwQprEPC0gfVIjkou+QYvXM+2gm/LeRpY1Gv5KNT79EYB37H1uMCrwA+HL9BY7OtlaNWtYNg==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-select: ^5.0.0
+
   react-select@5.10.2:
     resolution: {integrity: sha512-Z33nHdEFWq9tfnfVXaiM12rbJmk+QjFEztWLtmXqQhz6Al4UZZ9xc0wiatmGtUOCCnHN0WizL3tCMYRENX4rVQ==}
     peerDependencies:
@@ -2590,6 +2610,9 @@ packages:
   slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
+
+  sleep-promise@9.1.0:
+    resolution: {integrity: sha512-UHYzVpz9Xn8b+jikYSD6bqvf754xL2uBUzDFwiU6NcdZeifPr6UfgU43xpkPu67VMS88+TI2PSI7Eohgqf2fKA==}
 
   snippet@0.1.0:
     resolution: {integrity: sha512-9l9kPqAW2Bte4X8bbWaybmQBXRn9vJ9N5Ysnl4OSGflD1TTdSxLzSXfmc0uCtROWfaOk6HD75xKKu1AuItf6tA==}
@@ -2805,8 +2828,22 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  use-is-mounted-ref@1.5.0:
+    resolution: {integrity: sha512-p5FksHf/ospZUr5KU9ese6u3jp9fzvZ3wuSb50i0y6fdONaHWgmOqQtxR/PUcwi6hnhQDbNxWSg3eTK3N6m+dg==}
+    peerDependencies:
+      react: '>=16.0.0'
+
   use-isomorphic-layout-effect@1.2.1:
     resolution: {integrity: sha512-tpZZ+EX0gaghDAiFR37hj5MgY6ZN55kLiPkJsKxBMZ6GZdOSPJXiOzPM984oPYZ5AnehYx5WQp1+ME8I/P/pRA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  use-latest@1.3.0:
+    resolution: {integrity: sha512-mhg3xdm9NaM8q+gLT8KryJPnRFOz1/5XPBhmDEVZK1webPzDjrPk7f/mbpeLqTgB9msytYWANxgALOCJKnLvcQ==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -3612,6 +3649,8 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.44.2':
     optional: true
 
+  '@seznam/compose-react-refs@1.0.6': {}
+
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@standard-schema/utils@0.3.0': {}
@@ -4011,6 +4050,10 @@ snapshots:
       '@vitest/pretty-format': 3.2.4
       loupe: 3.1.4
       tinyrainbow: 2.0.0
+
+  '@vtaits/use-lazy-ref@0.1.4(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
 
   '@zag-js/accordion@1.21.0':
     dependencies:
@@ -5302,6 +5345,8 @@ snapshots:
 
   kleur@3.0.3: {}
 
+  krustykrab@1.1.0: {}
+
   lazy-cache@0.2.7: {}
 
   lazy-cache@1.0.4: {}
@@ -5647,6 +5692,19 @@ snapshots:
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)
 
+  react-select-async-paginate@0.7.11(@types/react@19.1.8)(react-select@5.10.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@seznam/compose-react-refs': 1.0.6
+      '@vtaits/use-lazy-ref': 0.1.4(react@19.1.0)
+      krustykrab: 1.1.0
+      react: 19.1.0
+      react-select: 5.10.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      sleep-promise: 9.1.0
+      use-is-mounted-ref: 1.5.0(react@19.1.0)
+      use-latest: 1.3.0(@types/react@19.1.8)(react@19.1.0)
+    transitivePeerDependencies:
+      - '@types/react'
+
   react-select@5.10.2(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.27.6
@@ -5780,6 +5838,8 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@5.1.0: {}
+
+  sleep-promise@9.1.0: {}
 
   snippet@0.1.0:
     dependencies:
@@ -5994,9 +6054,20 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
+  use-is-mounted-ref@1.5.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+
   use-isomorphic-layout-effect@1.2.1(@types/react@19.1.8)(react@19.1.0):
     dependencies:
       react: 19.1.0
+    optionalDependencies:
+      '@types/react': 19.1.8
+
+  use-latest@1.3.0(@types/react@19.1.8)(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      use-isomorphic-layout-effect: 1.2.1(@types/react@19.1.8)(react@19.1.0)
     optionalDependencies:
       '@types/react': 19.1.8
 
