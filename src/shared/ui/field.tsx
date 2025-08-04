@@ -12,8 +12,12 @@ export const inputDefaultProps = {
 	rounded: 'lg',
 	bg: 'bg-secondary',
 	color: 'text-secondary',
-	_placeholder: { color: 'surface' },
-	borderColor: 'transparent',
+	_placeholder: {
+		color:
+			'color-mix(in srgb, var(--chakra-colors-text-secondary) 50%, transparent)',
+	},
+	border:
+		'1px solid color-mix(in srgb, var(--chakra-colors-text-contrast) 20%, transparent)',
 };
 
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
@@ -22,7 +26,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
 			props;
 
 		return (
-			<ChakraField.Root ref={ref} {...rest} color={'text-primary'}>
+			<ChakraField.Root ref={ref} {...rest} color={'text-contrast'}>
 				{label && (
 					<ChakraField.Label>
 						{label}

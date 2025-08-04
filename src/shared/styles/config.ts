@@ -7,6 +7,7 @@ const colors = {
 
 		'text-primary': '#fafafa',
 		'text-secondary': '#21212f',
+		'text-tertiary': '#1f1f1f',
 
 		surface: '#4C4C8B',
 
@@ -27,6 +28,7 @@ const colors = {
 
 		'text-primary': '#DDDDDD',
 		'text-secondary': '#B5B5DC',
+		'text-tertiary': '#f0f0f0',
 
 		surface: '#242444',
 
@@ -120,6 +122,13 @@ const config = defineConfig({
 					value: {
 						base: colors.light['text-secondary'],
 						_dark: colors.dark['text-secondary'],
+					},
+				},
+
+				'text-contrast': {
+					value: {
+						base: colors.light['text-tertiary'],
+						_dark: colors.dark['text-tertiary'],
 					},
 				},
 

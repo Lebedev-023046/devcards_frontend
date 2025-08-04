@@ -4,8 +4,8 @@ import { Heading } from '@chakra-ui/react';
 function CreateDeckPage() {
 	return (
 		<section>
-			<Heading as={'h1'} color={'text-primary'}>
-				Создать колоду
+			<Heading as={'h1'} textAlign={'center'} color={'text-contrast'}>
+				Создание колоды
 			</Heading>
 			<CreateDeckForm />
 		</section>

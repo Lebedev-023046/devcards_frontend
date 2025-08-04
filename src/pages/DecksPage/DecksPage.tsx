@@ -9,7 +9,7 @@ function DecksPage() {
 	return (
 		<section className={styles.deckPageWrapper}>
 			<div className={styles.sectionHeader}>
-				<Heading color={'text-primary'}>Публичные колоды</Heading>
+				<Heading color='text-contrast'>Публичные колоды</Heading>
 				<div className={styles.sectionControls}>
 					<Button
 						bg={'button-primary-gradient'}

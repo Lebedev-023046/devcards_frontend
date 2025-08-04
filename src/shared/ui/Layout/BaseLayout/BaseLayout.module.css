@@ -3,6 +3,8 @@
 	display: flex;
 	flex-direction: column;
 	padding: 4rem 2.5rem;
+	background-color: var(--chakra-colors-bg);
+	color: var(--chakra-colors-text-contrast);
 }
 
 @media screen and (max-width: 425px) {

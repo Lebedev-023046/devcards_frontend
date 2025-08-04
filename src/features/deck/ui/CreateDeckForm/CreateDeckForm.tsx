@@ -1,91 +1,68 @@
-import { Checkbox } from '@/shared/ui/checkbox';
-import { Field, inputDefaultProps } from '@/shared/ui/field';
-import {
-	Box,
-	CloseButton,
-	FileUpload,
-	Input,
-	InputGroup,
-	Stack,
-} from '@chakra-ui/react';
-import { File } from 'lucide-react';
-import styles from './CreateDeckForm.module.css';
-import { TagsSelect } from './TagsSelect';
+import { Box, Button, Stack } from '@chakra-ui/react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { BgImageField } from './fields/BgImage';
+import { DescriptionField } from './fields/Description';
+import { IsPublicField } from './fields/IsPublic';
+import { TagsSelect } from './fields/TagsSelect';
+import { TitleField } from './fields/Title';
+
+interface CreateDeckFormValues {
+	title: string;
+	description: string;
+	isPublic: boolean;
+	backgroundImage: File | null;
+	tags: string[];
+}
 
 export function CreateDeckForm() {
+	const methods = useForm<CreateDeckFormValues>({
+		defaultValues: {
+			title: '',
+			description: '',
+			isPublic: true,
+			backgroundImage: null,
+			tags: [],
+		},
+	});
+
+	const onSubmit = (data: any) => {
+		console.log(data);
+	};
+
 	return (
-		<Box as='form' role='form' mt={6} className={styles.form}>
-			<Stack gap={4}>
-				<Field
-					// invalid={!!errors.email?.message}
-					label='Название'
-					// errorText={errors.email?.message}
-				>
-					<InputGroup>
-						<Input
-							// {...register('email')}
-							placeholder='название'
-							{...inputDefaultProps}
-						/>
-					</InputGroup>
-				</Field>
-				<Field
-					// invalid={!!errors.email?.message}
-					label='Описание'
-					// errorText={errors.email?.message}
-				>
-					<InputGroup>
-						<Input
-							// {...register('email')}
-							placeholder='oписание'
-							{...inputDefaultProps}
-						/>
-					</InputGroup>
-				</Field>
-				{/* should be checkbox */}
-				<Checkbox color='text-primary'>публичная колода</Checkbox>
+		<FormProvider {...methods}>
+			<Box
+				color='text-contrast'
+				as='form'
+				onSubmit={methods.handleSubmit(onSubmit)}
+				role='form'
+				mt={6}
+				maxW={520}
+				mx='auto'
+			>
+				<Stack gap={4}>
+					{/* TITLE */}
+					<TitleField />
+					{/* DESCRIPTION */}
+					<DescriptionField />
 
-				<FileUpload.Root
-					accept='.png, .jpg, .jpeg, .webp, .svg'
-					color='text-primary'
-					gap='0.5rem'
-					maxWidth='100%'
-				>
-					<FileUpload.HiddenInput />
-					<FileUpload.Label>Загрузите фон колоды</FileUpload.Label>
-					<InputGroup
-						startElement={
-							<File size={20} color='var(--chakra-colors-text-primary)' />
-						}
-						endElement={
-							<FileUpload.ClearTrigger asChild>
-								<CloseButton
-									color='text-primary'
-									me='-1'
-									size='xs'
-									variant='plain'
-									focusVisibleRing='inside'
-									focusRingWidth='2px'
-									pointerEvents='auto'
-								/>
-							</FileUpload.ClearTrigger>
-						}
-					>
-						<Input asChild>
-							<FileUpload.Trigger>
-								<FileUpload.FileText
-									color='text-primary'
-									fallback='Выберите файл'
-								/>
-							</FileUpload.Trigger>
-						</Input>
-					</InputGroup>
-				</FileUpload.Root>
-				<TagsSelect />
-			</Stack>
+					{/* IS PUBLIC */}
+					<IsPublicField />
 
-			{/* should be additional fields */}
-			{/* <Input inputSize='lg' placeholder='Cards' /> */}
-		</Box>
+					{/* BACKGROUND IMAGE */}
+					<BgImageField />
+
+					{/* TAGS */}
+					<TagsSelect />
+				</Stack>
+
+				<Button mt={7} fontSize='1.25rem' bg='button-primary' type='submit'>
+					Создать колоду
+				</Button>
+
+				{/* should be additional fields */}
+				{/* <Input inputSize='lg' placeholder='Cards' /> */}
+			</Box>
+		</FormProvider>
 	);
 }
