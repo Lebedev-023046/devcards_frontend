@@ -11,6 +11,7 @@ export const IsPublicField = () => {
 			defaultValue={true}
 			render={({ field }) => (
 				<Checkbox
+					width={'fit-content'}
 					color='text-contrast'
 					checked={field.value}
 					onChange={e => field.onChange((e.target as HTMLInputElement).checked)}

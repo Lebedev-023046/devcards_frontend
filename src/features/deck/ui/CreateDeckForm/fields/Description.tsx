@@ -14,11 +14,11 @@ export const DescriptionField = () => {
 			control={control}
 			render={({ field }) => (
 				<Field
-					label='Название'
+					label='Описание'
 					errorText={errors.description?.message as string}
 				>
 					<InputGroup>
-						<Input placeholder='название' {...field} {...inputDefaultProps} />
+						<Input placeholder='описание' {...field} {...inputDefaultProps} />
 					</InputGroup>
 				</Field>
 			)}

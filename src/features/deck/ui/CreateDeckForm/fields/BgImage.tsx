@@ -11,7 +11,7 @@ export const BgImageField = () => {
 
 	return (
 		<Controller
-			name='backgroundImage'
+			name='coverImageUrl'
 			control={control}
 			defaultValue={null}
 			render={({ field }) => (
