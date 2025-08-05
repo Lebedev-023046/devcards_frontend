@@ -6,6 +6,11 @@ export const ENDPOINTS = {
 
 	user: {
 		getUser: (id: string) => `/users/${id}`,
+		getFavoriteDeckIds: () => `/me/decks/favorites/ids`,
+		getFavoriteDecks: () => `/me/decks/favorites`,
+		addToFavoriteDecks: () => `/me/decks/favorites`,
+		removeFromFavoriteDecks: (deckId: string) =>
+			`/me/decks/favorites/${deckId}`,
 	},
 
 	decks: {
@@ -13,6 +18,8 @@ export const ENDPOINTS = {
 		getTop: () => `/decks/top`,
 		getMy: () => `/decks/my`,
 		getById: (id: string) => `/decks/${id}`,
+		getFavoriteIds: ({ userId }: { userId: string }) =>
+			`/decks/favorites/${userId}`,
 		create: () => `/decks`,
 		update: (id: string) => `/decks/${id}`,
 		remove: (id: string) => `/decks/${id}`,
