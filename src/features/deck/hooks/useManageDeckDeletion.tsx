@@ -2,7 +2,7 @@ import { ConfirmDialog } from '@/shared/ui/сonfirmDialog';
 import { IconButton, useDisclosure } from '@chakra-ui/react';
 import { Trash } from 'lucide-react';
 import { useState } from 'react';
-import { useDeleteDeck } from '../../hooks/useDeleteDeck';
+import { useDeleteDeck } from './useDeleteDeck';
 
 export const useDeleteDeckView = () => {
 	const { open, onOpen, onClose } = useDisclosure();
@@ -13,7 +13,6 @@ export const useDeleteDeckView = () => {
 	const handleDeleteDeck = async () => {
 		if (targetDeckId) {
 			removeDeck(targetDeckId);
-			console.log({ targetDeckId });
 		}
 		onClose();
 	};
