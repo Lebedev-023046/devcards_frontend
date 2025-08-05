@@ -9,3 +9,9 @@ export interface TagResponse {
 	page: number;
 	lastPage: number;
 }
+
+export interface DeckTag {
+	deckId: string;
+	tagId: string;
+	tag: Tag;
+}
