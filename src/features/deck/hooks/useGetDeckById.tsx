@@ -5,6 +5,10 @@ import { useParams } from 'react-router-dom';
 export function useGetDeckById() {
 	const { deckId } = useParams();
 
+	if (!deckId) {
+		return { data: null, error: 'Deck id not found', isLoading: false };
+	}
+
 	const enabled = !!deckId;
 
 	const {
@@ -12,8 +16,7 @@ export function useGetDeckById() {
 		error,
 		isLoading,
 	} = useQuery({
-		queryKey: ['getDeckById', deckId],
-		queryFn: () => deckApi.getDeckById(deckId!),
+		...deckApi.getDeckByIdQueryOptions(deckId),
 		enabled,
 	});
 

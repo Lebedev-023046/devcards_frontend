@@ -12,13 +12,13 @@ export function useCreateDeck() {
 
 	return useMutation({
 		mutationFn: deckApi.createDeck,
-		onSuccess(apiResponse) {
+		async onSuccess(apiResponse) {
 			navigate(ROUTES.DECK(apiResponse.data.id), {
 				replace: true,
 			});
 			toast.success('Колода успешно создана!');
 		},
-		onError(error) {
+		async onError(error) {
 			const apiResponse = (error as AxiosError<ApiResponse<DeckRequest>>)
 				?.response?.data;
 			if (apiResponse) {
