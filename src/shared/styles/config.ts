@@ -30,7 +30,7 @@ const colors = {
 		'text-secondary': '#B5B5DC',
 		'text-tertiary': '#f0f0f0',
 
-		surface: '#242444',
+		surface: '#373767',
 
 		'button-primary': '#4FD1C5',
 		'button-primary-2': '#2CA6A0',
