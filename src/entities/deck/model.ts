@@ -1,3 +1,6 @@
+import type { Card } from '../card/model';
+import type { DeckTag } from '../tag/model';
+
 export interface CardCreateRequest {
 	question: string;
 	answer: string;
@@ -10,14 +13,14 @@ export interface DeckRequest {
 	isPublic?: boolean;
 	coverImageUrl?: string;
 	tagIds?: string[];
-	cards?: CardCreateRequest[];
 }
 
-export interface DeckResponse {
+export interface Deck {
 	id: string;
 	title: string;
 	description: string;
 	isPublic: boolean;
+	totalCards: number;
 
 	coverImageUrl: string;
 
@@ -29,7 +32,14 @@ export interface DeckResponse {
 	createdAt: string;
 	updatedAt: string;
 
-	cardsCount?: number;
-	tagIds?: string[];
-	tags?: { id: string; name: string }[];
+	cards: Card[];
+	deckTags: DeckTag[];
+}
+
+export interface DeckPagineted {
+	items: Deck[];
+	page: number;
+	limit: number;
+	total: number;
+	lastPage: number;
 }
