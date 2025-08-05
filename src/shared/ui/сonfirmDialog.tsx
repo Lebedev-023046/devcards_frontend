@@ -22,10 +22,16 @@ export function ConfirmDialog({
 	isLoading = false,
 }: ConfirmDialogProps) {
 	return (
-		<Dialog.Root open={isOpen} onOpenChange={v => !v && onClose()}>
+		<Dialog.Root
+			placement='center'
+			motionPreset='slide-in-top'
+			open={isOpen}
+			onOpenChange={v => !v && onClose()}
+			lazyMount
+		>
 			<Dialog.Backdrop />
 			<Dialog.Positioner>
-				<Dialog.Content>
+				<Dialog.Content bg={'bg-accent'} color={'text-primary'}>
 					<Dialog.CloseTrigger />
 					<Dialog.Header>
 						<Dialog.Title>{title}</Dialog.Title>
@@ -35,10 +41,10 @@ export function ConfirmDialog({
 					</Dialog.Body>
 					<Dialog.Footer>
 						<Flex gap={2} w='100%' justify='flex-end'>
-							<Button variant='outline' onClick={onClose}>
+							<Button bg='red.400' onClick={onClose}>
 								{cancelText}
 							</Button>
-							<Button colorScheme='red' onClick={onConfirm} loading={isLoading}>
+							<Button bg='green.600' onClick={onConfirm} loading={isLoading}>
 								{confirmText}
 							</Button>
 						</Flex>
