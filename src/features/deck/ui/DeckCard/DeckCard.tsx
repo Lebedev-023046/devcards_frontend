@@ -1,10 +1,10 @@
-import { useManageFavoriteDeck } from '@/features/favorite/hooks/useManageFavoriteDeck';
 import { ROUTES } from '@/shared/routes';
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import cn from 'clsx';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useManageFavoriteDeck } from '../../favorite-decks/hooks/useManageFavoriteDeck';
 import { useDeleteDeckView } from '../../hooks/useManageDeckDeletion';
 import styles from './DeckCard.module.css';
 
