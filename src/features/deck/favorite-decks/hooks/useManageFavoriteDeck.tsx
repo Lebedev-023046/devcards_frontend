@@ -1,10 +1,9 @@
-import { useAddToFavoriteDecks } from '@/features/favorite/hooks/useAddToFavoriteDecks';
-import { useRemoveFromFavoriteDecks } from '@/features/favorite/hooks/useRemoveFromFavoriteDecks';
 import { IconButton, useToken } from '@chakra-ui/react';
 import { Star } from 'lucide-react';
 import { useMemo } from 'react';
-// import styles from './DeckCard.module.css';
+import { useAddToFavoriteDecks } from './useAddToFavoriteDecks';
 import { useGetFavoriteDeckIds } from './useGetFavoriteDeckIds';
+import { useRemoveFromFavoriteDecks } from './useRemoveFromFavoriteDecks';
 
 export function useManageFavoriteDeck({ deckId }: { deckId: string }) {
 	const { data: favoriteDeckIds } = useGetFavoriteDeckIds();

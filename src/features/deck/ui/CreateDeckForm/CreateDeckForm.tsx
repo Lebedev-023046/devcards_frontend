@@ -1,5 +1,7 @@
 import type { DeckRequest } from '@/entities/deck/model';
+import { uploadsApi } from '@/shared/api/uploadsApi';
 import { Box, Button, Stack } from '@chakra-ui/react';
+import { useMutation } from '@tanstack/react-query';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useCreateDeck } from '../../hooks/useCreateDeck';
 import { BgImageField } from './fields/BgImage';
@@ -15,6 +17,12 @@ type SelectOption = {
 
 type formValues = Omit<DeckRequest, 'tagIds'> & { tags: SelectOption[] };
 
+function useUploadDeckCover() {
+	return useMutation({
+		mutationFn: (file: File) => uploadsApi.uploadDeckCover(file),
+	});
+}
+
 export function CreateDeckForm() {
 	const methods = useForm<formValues>({
 		defaultValues: {
@@ -27,14 +35,22 @@ export function CreateDeckForm() {
 	});
 
 	const { mutate: createDeck } = useCreateDeck();
+	const { mutateAsync: uploadDeckCover } = useUploadDeckCover();
 
-	const onSubmit = (data: formValues) => {
+	const onSubmit = async (data: formValues) => {
+		let coverImageFile = data.coverImageUrl; // get coverImageUrl as File
+
+		if (coverImageFile instanceof File) {
+			const coverImageUrl = await uploadDeckCover(coverImageFile);
+			coverImageFile = coverImageUrl;
+		}
+
 		// convert tags (selectOption Type) into tagIda
 		const tagIds = data.tags.map(tag => tag.value);
 		// remove tags from data
 		const { tags, ...rest } = data;
 		// create deck with required fields including tagIds
-		createDeck({ ...rest, tagIds });
+		createDeck({ ...rest, tagIds, coverImageUrl: coverImageFile });
 	};
 
 	return (

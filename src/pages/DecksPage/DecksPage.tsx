@@ -2,13 +2,11 @@ import { useGetPublicDecks } from '@/features/deck/hooks/useGetPublicDecks';
 import { DeckCard } from '@/features/deck/ui/DeckCard';
 import { ROUTES } from '@/shared/routes';
 import { Box, Button, Heading, Wrap } from '@chakra-ui/react';
-
 import { useNavigate } from 'react-router-dom';
 import styles from './DecksPage.module.css';
 
 function DecksPage() {
 	const navigate = useNavigate();
-
 	const { data: publicDecks } = useGetPublicDecks();
 
 	return (
@@ -34,6 +32,7 @@ function DecksPage() {
 						title={deck.title}
 						description={deck.description}
 						totalCards={deck.totalCards ?? 0}
+						deckCoverUrl={deck.coverImageUrl}
 						tagNames={deck.deckTags.map(tagInfo => tagInfo.tag.name)}
 					/>
 				))}

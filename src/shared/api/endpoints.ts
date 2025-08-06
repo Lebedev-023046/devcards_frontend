@@ -56,4 +56,8 @@ export const ENDPOINTS = {
 		remove: (deckId: string) => `/favorites/${deckId}`,
 		removeFavoriteDeck: (deckId: string) => `/decks/${deckId}/favorite`,
 	},
+
+	uploads: {
+		deckCover: () => '/uploads/deck-cover',
+	},
 } as const;

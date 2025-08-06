@@ -11,7 +11,7 @@ export interface DeckRequest {
 	title: string;
 	description?: string;
 	isPublic?: boolean;
-	coverImageUrl?: string;
+	coverImageUrl?: string | File;
 	tagIds?: string[];
 }
 

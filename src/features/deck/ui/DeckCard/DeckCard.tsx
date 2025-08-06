@@ -1,4 +1,5 @@
 import { ROUTES } from '@/shared/routes';
+import { useColorModeValue } from '@/shared/styles/color-mode';
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import cn from 'clsx';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -14,6 +15,7 @@ interface Props {
 	description: string;
 	totalCards: number;
 	tagNames: string[];
+	deckCoverUrl: string;
 }
 
 export function DeckCard({
@@ -22,6 +24,7 @@ export function DeckCard({
 	description,
 	totalCards,
 	tagNames,
+	deckCoverUrl,
 }: Props) {
 	const [isInfoOpen, setIsInfoOpen] = useState(false);
 
@@ -29,11 +32,26 @@ export function DeckCard({
 		useDeleteDeckView();
 	const { renderFavoriteDeckIcon } = useManageFavoriteDeck({ deckId });
 
+	const bgImagePath = deckCoverUrl
+		? `${import.meta.env.VITE_API_URL}${deckCoverUrl}`
+		: undefined;
+
+	const overlay = useColorModeValue(
+		'',
+		'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),', // Чёрный полупрозрачный градиент для dark
+	);
+
 	return (
 		<>
 			{renderConfirmDeckDeletionDialog()}
 			<Box className={cn(styles.deckCardWrapper, isInfoOpen && styles.open)}>
-				<Box className={cn(styles.deckSide, styles.front)}>
+				<Box
+					bg={bgImagePath ? 'transparent' : 'bg-accent'}
+					bgImage={`${overlay} url(${bgImagePath})`}
+					bgRepeat='no-repeat'
+					bgSize='cover'
+					className={cn(styles.deckSide, styles.front)}
+				>
 					<Stack height={'100%'} overflow={'auto'} gap={2}>
 						<Flex
 							gap={2}
@@ -70,7 +88,13 @@ export function DeckCard({
 						</Flex>
 					</Stack>
 				</Box>
-				<Box className={cn(styles.deckSide, styles.back)}>
+				<Box
+					bg={bgImagePath ? 'transparent' : 'bg-accent'}
+					bgImage={`${overlay} url(${bgImagePath})`}
+					bgRepeat='no-repeat'
+					bgSize='cover'
+					className={cn(styles.deckSide, styles.back)}
+				>
 					<Stack height={'100%'} overflow={'auto'} gap={2}>
 						<Text>Количество карточек: {totalCards}</Text>
 						<Text>Теги: {tagNames.length ? tagNames.join(', ') : 'нет'}</Text>
