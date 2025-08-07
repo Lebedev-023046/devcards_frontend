@@ -29,3 +29,10 @@ export interface CardRequest {
 	answer?: string;
 	options?: Option[];
 }
+
+export interface CardConfig {
+	type: CardType;
+	question: string;
+	options?: Option[];
+	answerText?: string; // для info
+}

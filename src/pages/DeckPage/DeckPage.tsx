@@ -1,3 +1,5 @@
+import { Card } from '@/features/card/ui/Card';
+import { CreateCard } from '@/features/card/ui/CreateCard';
 import { useGetDeckById } from '@/features/deck/hooks/useGetDeckById';
 import {
 	Box,
@@ -7,6 +9,7 @@ import {
 	Span,
 	Stack,
 	Text,
+	Wrap,
 } from '@chakra-ui/react';
 
 function DeckPage() {
@@ -17,7 +20,7 @@ function DeckPage() {
 	if (!deckInfo) return <div>Колода не найдена</div>;
 
 	return (
-		<Container p={0} m={0}>
+		<Container maxW={'100%'} p={0} m={0}>
 			<Flex alignItems={'flex-start'}>
 				<Stack gap={2}>
 					<Heading as={'h1'} fontSize={'3xl'}>
@@ -37,9 +40,16 @@ function DeckPage() {
 					</Text>
 					<Box></Box>
 				</Stack>
-
-				{/* {deckInfo.description && <Text>{deckInfo.description}</Text>} */}
 			</Flex>
+			<Wrap gap={4} my={8}>
+				<CreateCard />
+				<Card type='INFO' />
+				<Card type='SINGLE_CHOICE' />
+				<Card type='MULTI_CHOICE' />
+				<Card type='INFO' />
+				<Card type='INFO' />
+				<Card type='INFO' />
+			</Wrap>
 		</Container>
 	);
 }

@@ -14,6 +14,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 			<ChakraCheckbox.Root ref={rootRef} {...rest}>
 				<ChakraCheckbox.HiddenInput ref={ref} {...inputProps} />
 				<ChakraCheckbox.Control
+					alignSelf='baseline'
+					_checked={{
+						bg: 'button-secondary',
+					}}
+					_disabled={{ opacity: 1 }}
 					border='1px solid var(--chakra-colors-text-contrast)'
 					borderRadius='sm'
 				>
