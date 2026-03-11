@@ -26,3 +26,6 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+/ai-dev-tasks
+API_REFERENCE.md
