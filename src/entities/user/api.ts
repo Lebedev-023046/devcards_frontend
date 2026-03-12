@@ -1,46 +1,29 @@
-import type { ApiResponse } from '@/shared/api/types';
-import { api } from '@/shared/lib/api';
-import { ENDPOINTS } from '@shared/api/endpoints';
-import { queryOptions } from '@tanstack/react-query';
-import type { Deck } from '../deck/model';
-import type { AuthRequestDto, AuthResponseDto, UserInfo } from './model';
+import { api } from "@/shared/lib/api";
+import { ENDPOINTS } from "@shared/api/endpoints";
+import { queryOptions } from "@tanstack/react-query";
+import type { Deck } from "../deck/model";
+import type { AuthRequestDto, AuthResponseDto, UserInfo } from "./model";
 
-type AuthResponse = Promise<ApiResponse<AuthResponseDto>>;
+type AuthResponse = Promise<AuthResponseDto>;
 type AuthRequest = AuthRequestDto;
 
 export const userApi = {
-	baseFavoriteDecksKey: 'favoriteDecks',
+	baseFavoriteDecksKey: "favoriteDecks",
 
-	getUser: async (id: string) =>
-		api
-			.get<ApiResponse<UserInfo>>(ENDPOINTS.user.getUser(id))
-			.then(res => res.data),
+	getUser: async (id: string) => api.get<UserInfo>(ENDPOINTS.user.getUser(id)),
 
-	getFavoriteDecks: () =>
-		api
-			.get<ApiResponse<Deck[]>>(ENDPOINTS.user.getFavoriteDecks())
-			.then(res => res.data),
+	getFavoriteDecks: () => api.get<Deck[]>(ENDPOINTS.user.getFavoriteDecks()),
 	getFavoriteDeckIds: () =>
-		api
-			.get<ApiResponse<{ deckId: string }[]>>(
-				ENDPOINTS.user.getFavoriteDeckIds(),
-			)
-			.then(res => res.data),
+		api.get<{ deckId: string }[]>(ENDPOINTS.user.getFavoriteDeckIds()),
 
 	// MUTATIONS
 	addToFavoriteDecks: (deckId: string) =>
-		api
-			.post<ApiResponse<Deck[]>>(ENDPOINTS.user.addToFavoriteDecks(), {
-				deckId,
-			})
-			.then(res => res.data),
+		api.post<Deck[]>(ENDPOINTS.user.addToFavoriteDecks(), {
+			deckId,
+		}),
 
 	removeFromFavoriteDecks: (deckId: string) =>
-		api
-			.delete<ApiResponse<Deck[]>>(
-				ENDPOINTS.user.removeFromFavoriteDecks(deckId),
-			)
-			.then(res => res.data),
+		api.delete<Deck[]>(ENDPOINTS.user.removeFromFavoriteDecks(deckId)),
 
 	// QUERY OPTIONS
 	getFavoriteDecksQueryOptions: () => {
@@ -52,7 +35,7 @@ export const userApi = {
 
 	getFavoriteDeckIdsQueryOptions: () => {
 		return queryOptions({
-			queryKey: [userApi.baseFavoriteDecksKey, 'ids'],
+			queryKey: [userApi.baseFavoriteDecksKey, "ids"],
 			queryFn: () => userApi.getFavoriteDeckIds(),
 		});
 	},
@@ -65,11 +48,10 @@ export const authApi = {
 	 * @param payload.password
 	 */
 	signUp: async (payload: AuthRequest, signal?: AbortSignal): AuthResponse => {
-		const res = await api.post<AuthResponse>(ENDPOINTS.auth.signup(), payload, {
+		return api.post<AuthResponseDto>(ENDPOINTS.auth.signup(), payload, {
 			skipAuth: true,
 			signal,
 		});
-		return res.data;
 	},
 
 	/**
@@ -78,10 +60,9 @@ export const authApi = {
 	 * @param payload.password
 	 */
 	signIn: async (payload: AuthRequest, signal?: AbortSignal): AuthResponse => {
-		const res = await api.post<AuthResponse>(ENDPOINTS.auth.signin(), payload, {
+		return api.post<AuthResponseDto>(ENDPOINTS.auth.signin(), payload, {
 			signal,
 			skipAuth: true,
 		});
-		return res.data;
 	},
 };

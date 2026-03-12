@@ -8,12 +8,12 @@ import type { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export function useSignUp() {
+export function useSignIn() {
 	const { signin } = useSession();
 	const navigate = useNavigate();
 
 	return useMutation({
-		mutationFn: authApi.signUp,
+		mutationFn: authApi.signIn,
 		onSuccess(data) {
 			signin(data.access_token, data.refresh_token);
 			navigate(ROUTES.DECKS(), {

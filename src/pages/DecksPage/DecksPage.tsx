@@ -9,6 +9,8 @@ function DecksPage() {
 	const navigate = useNavigate();
 	const { data: publicDecks } = useGetPublicDecks();
 
+	console.log(publicDecks);
+
 	return (
 		<Box height={'100%'}>
 			<div className={styles.sectionHeader}>
@@ -25,7 +27,7 @@ function DecksPage() {
 				</div>
 			</div>
 			<Wrap gap={4} my={8}>
-				{publicDecks?.data.items.map(deck => (
+				{publicDecks?.items.map(deck => (
 					<DeckCard
 						key={deck.id}
 						deckId={deck.id}

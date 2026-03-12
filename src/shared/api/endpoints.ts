@@ -1,9 +1,9 @@
 export const ENDPOINTS = {
 	auth: {
-		signin: () => '/auth/signin',
-		signup: () => '/auth/signup',
+		signin: () => "/auth/signin",
+		signup: () => "/auth/signup",
+		refresh: () => "/auth/refresh",
 	},
-
 	user: {
 		getUser: (id: string) => `/users/${id}`,
 		getFavoriteDeckIds: () => `/me/decks/favorites/ids`,
@@ -34,7 +34,7 @@ export const ENDPOINTS = {
 	},
 
 	tags: {
-		getAll: ({ page = 1, limit = 10, search = '' }) =>
+		getAll: ({ page = 1, limit = 10, search = "" }) =>
 			`/tags?page=${page}&limit=${limit}&search=${encodeURIComponent(search)}`,
 		getByDeck: (deckId: string) => `/decks/${deckId}/tags`,
 		create: () => `/tags`,
@@ -58,6 +58,6 @@ export const ENDPOINTS = {
 	},
 
 	uploads: {
-		deckCover: () => '/uploads/deck-cover',
+		deckCover: () => "/uploads/deck-cover",
 	},
 } as const;
