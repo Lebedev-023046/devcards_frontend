@@ -1,10 +1,10 @@
-import type { Card } from '../card/model';
-import type { DeckTag } from '../tag/model';
+import type { Card } from "../card/model";
+import type { DeckTag } from "../tag/model";
 
 export interface CardCreateRequest {
 	question: string;
 	answer: string;
-	type: 'open' | 'boolean' | 'multipleChoice';
+	type: "open" | "boolean" | "multipleChoice";
 }
 
 export interface DeckRequest {
@@ -36,7 +36,7 @@ export interface Deck {
 	deckTags: DeckTag[];
 }
 
-export interface DeckPagineted {
+export interface DeckPaginated {
 	items: Deck[];
 	page: number;
 	limit: number;

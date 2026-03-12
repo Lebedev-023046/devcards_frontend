@@ -1,13 +1,21 @@
 import { ENDPOINTS } from "@/shared/api/endpoints";
 import { api } from "@/shared/lib/api";
 import { queryOptions } from "@tanstack/react-query";
-import type { Deck, DeckPagineted, DeckRequest } from "./model";
+import type { Deck, DeckPaginated, DeckRequest } from "./model";
 
 export const deckApi = {
 	baseKey: "decks",
 
 	// GET
-	getPublicDecks: () => api.get<DeckPagineted>(ENDPOINTS.decks.getPublic()),
+	getPublicDecks: (page = 1, limit = 10, search = "") =>
+		api.get<DeckPaginated>(ENDPOINTS.decks.getPublic(), {
+			params: { page, limit, search },
+		}),
+
+	getTopDecks: (limit = 5) =>
+		api.get<Deck[]>(ENDPOINTS.decks.getTop(), {
+			params: { limit },
+		}),
 
 	getUserDecks: () => api.get<Deck[]>(ENDPOINTS.decks.getMy()),
 
@@ -20,12 +28,22 @@ export const deckApi = {
 	// DELETE
 	deleteDeck: (id: string) => api.delete<Deck>(ENDPOINTS.decks.remove(id)),
 
-	//  QUERY OPTIONS
-	// GET
-	getPublicDecksQueryOptions: () => {
+	// QUERY OPTIONS
+	getPublicDecksQueryOptions: (
+		page?: number,
+		limit?: number,
+		search?: string,
+	) => {
 		return queryOptions({
-			queryKey: [deckApi.baseKey, "publicDecks"],
-			queryFn: () => deckApi.getPublicDecks(),
+			queryKey: [deckApi.baseKey, "publicDecks", page, limit, search],
+			queryFn: () => deckApi.getPublicDecks(page, limit, search),
+		});
+	},
+
+	getTopDecksQueryOptions: (limit?: number) => {
+		return queryOptions({
+			queryKey: [deckApi.baseKey, "topDecks", limit],
+			queryFn: () => deckApi.getTopDecks(limit),
 		});
 	},
 
@@ -35,6 +53,7 @@ export const deckApi = {
 			queryFn: () => deckApi.getUserDecks(),
 		});
 	},
+
 	getDeckByIdQueryOptions: (id: string) => {
 		return queryOptions({
 			queryKey: [deckApi.baseKey, "deck", id],

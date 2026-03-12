@@ -4,14 +4,29 @@ import { infiniteQueryOptions } from "@tanstack/react-query";
 import type { TagResponse } from "./model";
 
 export const tagsApi = {
-	getAllTags: ({ page = 1, limit = 10 }) =>
-		api.get<TagResponse>(ENDPOINTS.tags.getAll({ page, limit })),
+	getAllTags: ({
+		page = 1,
+		limit = 10,
+		search = "",
+	}: {
+		page?: number;
+		limit?: number;
+		search?: string;
+	}) => api.get<TagResponse>(ENDPOINTS.tags.getAll({ page, limit, search })),
 
-	getAllTagsInfinityQueryOptions: ({ page = 1, limit = 10 }) => {
+	getAllTagsInfinityQueryOptions: ({
+		page = 1,
+		limit = 10,
+		search = "",
+	}: {
+		page?: number;
+		limit?: number;
+		search?: string;
+	}) => {
 		return infiniteQueryOptions({
-			queryKey: ["allTags", page, limit],
+			queryKey: ["allTags", page, limit, search],
 			queryFn: (meta) =>
-				tagsApi.getAllTags({ page: meta.pageParam, limit: 10 }),
+				tagsApi.getAllTags({ page: meta.pageParam, limit, search }),
 			initialPageParam: 1,
 			getNextPageParam: (lastPageResponse) => {
 				if (lastPageResponse.lastPage > lastPageResponse.page)
