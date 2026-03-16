@@ -7,10 +7,11 @@ export const deckApi = {
 	baseKey: "decks",
 
 	// GET
-	getPublicDecks: (page = 1, limit = 10, search = "") =>
-		api.get<DeckPaginated>(ENDPOINTS.decks.getPublic(), {
-			params: { page, limit, search },
-		}),
+	getPublicDecks: (page = 1, limit = 10, query = "") => {
+		return api.get<DeckPaginated>(ENDPOINTS.decks.getPublic(), {
+			params: { page, limit, query },
+		});
+	},
 
 	getTopDecks: (limit = 5) =>
 		api.get<Deck[]>(ENDPOINTS.decks.getTop(), {
@@ -32,11 +33,11 @@ export const deckApi = {
 	getPublicDecksQueryOptions: (
 		page?: number,
 		limit?: number,
-		search?: string,
+		query?: string,
 	) => {
 		return queryOptions({
-			queryKey: [deckApi.baseKey, "publicDecks", page, limit, search],
-			queryFn: () => deckApi.getPublicDecks(page, limit, search),
+			queryKey: [deckApi.baseKey, "publicDecks", page, limit, query],
+			queryFn: () => deckApi.getPublicDecks(page, limit, query),
 		});
 	},
 

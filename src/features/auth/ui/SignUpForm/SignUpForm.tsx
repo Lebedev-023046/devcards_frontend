@@ -1,21 +1,13 @@
-import { ROUTES } from '@/shared/routes';
-import { Field, inputDefaultProps } from '@/shared/ui/field';
-import {
-	Box,
-	Button,
-	Heading,
-	IconButton,
-	Input,
-	InputGroup,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { CircleUser, Eye, EyeOff, KeyRound, Mail } from 'lucide-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { useSignUp } from '../../hooks/useSignUp';
-import { signUpSchema, type SignUpData } from '../../model';
-import styles from './SignUpForm.module.css';
+import { ROUTES } from "@/shared/routes";
+import { Button, Field, Input } from "@/shared/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CircleUser, Eye, EyeOff, KeyRound, Mail } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useSignUp } from "../../hooks/useSignUp";
+import { signUpSchema, type SignUpData } from "../../model";
+import styles from "./SignUpForm.module.css";
 
 export function SignUpForm() {
 	const {
@@ -24,9 +16,9 @@ export function SignUpForm() {
 		formState: { errors, isSubmitting },
 	} = useForm<SignUpData>({
 		resolver: zodResolver(signUpSchema),
-		mode: 'onBlur',
+		mode: "onBlur",
 	});
-	const { mutate: signUp } = useSignUp();
+	const { mutate: signUp, isPending } = useSignUp();
 
 	const [shouldShowPassword, setShouldShowPassword] = useState(false);
 	const [shouldShowConfirmPassword, setShouldShowConfirmPassword] =
@@ -38,123 +30,128 @@ export function SignUpForm() {
 	};
 
 	return (
-		<div className={styles.formWrapper}>
-			<Heading
-				as='h1'
-				mb={6}
-				textAlign={'center'}
-				color={'text-primary'}
-				fontSize={'2rem'}
-			>
-				Регистрация
-			</Heading>
-			<div>
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className={styles.formFieldsWrapper}
-				>
-					<Field
-						invalid={!!errors.name?.message}
-						label='Имя'
-						errorText={errors.name?.message}
-					>
-						<InputGroup startElement={<CircleUser />}>
-							<Input
-								{...register('name')}
-								placeholder='ваше имя'
-								{...inputDefaultProps}
-							/>
-						</InputGroup>
-					</Field>
-					<Field
-						invalid={!!errors.email?.message}
-						label='Email'
-						errorText={errors.email?.message}
-					>
-						<InputGroup startElement={<Mail />}>
-							<Input
-								{...register('email')}
-								placeholder='me@example.com'
-								{...inputDefaultProps}
-							/>
-						</InputGroup>
-					</Field>
-					<Field
-						invalid={!!errors.password?.message}
-						label='Пароль'
-						errorText={errors.password?.message}
-					>
-						<InputGroup
-							startElement={<KeyRound />}
-							endElement={
-								<IconButton
-									_icon={{ w: '1.5rem', h: '1.5rem' }}
-									bg='transparent'
-									variant='ghost'
-									aria-label={
-										shouldShowPassword ? 'Скрыть пароль' : 'Показать пароль'
-									}
-									onClick={() => setShouldShowPassword(prev => !prev)}
-								>
-									{shouldShowPassword ? <Eye /> : <EyeOff />}
-								</IconButton>
-							}
-						>
-							<Input
-								{...register('password')}
-								type={shouldShowPassword ? 'text' : 'password'}
-								placeholder='пароль'
-								{...inputDefaultProps}
-							/>
-						</InputGroup>
-					</Field>
-					<Field
-						invalid={!!errors.confirmPassword?.message}
-						label='Повторите пароль'
-						errorText={errors.confirmPassword?.message}
-					>
-						<InputGroup
-							startElement={<KeyRound />}
-							endElement={
-								<IconButton
-									_icon={{ w: '1.5rem', h: '1.5rem' }}
-									bg='transparent'
-									variant='ghost'
-									aria-label={
-										shouldShowConfirmPassword
-											? 'Скрыть пароль'
-											: 'Показать пароль'
-									}
-									onClick={() => setShouldShowConfirmPassword(prev => !prev)}
-								>
-									{shouldShowPassword ? <Eye /> : <EyeOff />}
-								</IconButton>
-							}
-						>
-							<Input
-								{...register('confirmPassword')}
-								type={shouldShowPassword ? 'text' : 'password'}
-								placeholder='повторите пароль'
-								{...inputDefaultProps}
-							/>
-						</InputGroup>
-					</Field>
-					<Button
-						loading={isSubmitting}
-						bg={'button-primary'}
-						size='lg'
-						type='submit'
-					>
-						Создать аккаунт
-					</Button>
-				</form>
-				<Box color='text-primary' className={styles.footerText}>
-					Уже есть аккаунт?{' '}
-					<Link className={styles.link} to={ROUTES.SIGNIN()}>
-						Войти
-					</Link>
-				</Box>
+		<div className={styles.card}>
+			<div className={styles.header}>
+				<h1 className={styles.title}>Регистрация</h1>
+				<p className={styles.subtitle}>
+					Соберите личное пространство для карточек, повторения и прогресса.
+				</p>
 			</div>
+			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+				<Field
+					label="Имя"
+					htmlFor="signup-name"
+					errorText={errors.name?.message}
+				>
+					<div className={styles.inputWrap}>
+						<span className={styles.iconLeading}>
+							<CircleUser size={18} />
+						</span>
+						<Input
+							id="signup-name"
+							className={styles.input}
+							placeholder="Ваше имя"
+							{...register("name")}
+						/>
+					</div>
+				</Field>
+
+				<Field
+					label="Email"
+					htmlFor="signup-email"
+					errorText={errors.email?.message}
+				>
+					<div className={styles.inputWrap}>
+						<span className={styles.iconLeading}>
+							<Mail size={18} />
+						</span>
+						<Input
+							id="signup-email"
+							type="email"
+							className={styles.input}
+							placeholder="me@example.com"
+							{...register("email")}
+						/>
+					</div>
+				</Field>
+
+				<Field
+					label="Пароль"
+					htmlFor="signup-password"
+					errorText={errors.password?.message}
+				>
+					<div className={styles.inputWrap}>
+						<span className={styles.iconLeading}>
+							<KeyRound size={18} />
+						</span>
+						<Input
+							id="signup-password"
+							type={shouldShowPassword ? "text" : "password"}
+							className={styles.inputPassword}
+							placeholder="Не менее 8 символов"
+							{...register("password")}
+						/>
+						<button
+							type="button"
+							className={styles.toggle}
+							aria-label={
+								shouldShowPassword ? "Скрыть пароль" : "Показать пароль"
+							}
+							onClick={() => setShouldShowPassword((prev) => !prev)}
+						>
+							{shouldShowPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+						</button>
+					</div>
+				</Field>
+
+				<Field
+					label="Повторите пароль"
+					htmlFor="signup-confirm-password"
+					errorText={errors.confirmPassword?.message}
+				>
+					<div className={styles.inputWrap}>
+						<span className={styles.iconLeading}>
+							<KeyRound size={18} />
+						</span>
+						<Input
+							id="signup-confirm-password"
+							type={shouldShowConfirmPassword ? "text" : "password"}
+							className={styles.inputPassword}
+							placeholder="Повторите пароль"
+							{...register("confirmPassword")}
+						/>
+						<button
+							type="button"
+							className={styles.toggle}
+							aria-label={
+								shouldShowConfirmPassword ? "Скрыть пароль" : "Показать пароль"
+							}
+							onClick={() => setShouldShowConfirmPassword((prev) => !prev)}
+						>
+							{shouldShowConfirmPassword ? (
+								<EyeOff size={18} />
+							) : (
+								<Eye size={18} />
+							)}
+						</button>
+					</div>
+				</Field>
+
+				<Button
+					type="submit"
+					size="lg"
+					fullWidth
+					disabled={isPending || isSubmitting}
+				>
+					{isPending ? "Создаем..." : "Создать аккаунт"}
+				</Button>
+			</form>
+			<p className={styles.footer}>
+				Уже есть аккаунт?{" "}
+				<Link className={styles.link} to={ROUTES.SIGNIN()}>
+					Войти
+				</Link>
+			</p>
 		</div>
 	);
 }

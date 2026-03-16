@@ -90,8 +90,6 @@ export function Card({ type }: { type: CardType }) {
 		);
 	}
 
-	console.log({ frontContent });
-
 	return (
 		<FlipCard
 			isFlipped={isAnswerOpen}

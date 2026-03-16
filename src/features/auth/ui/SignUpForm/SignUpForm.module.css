@@ -1,42 +1,84 @@
-.formWrapper {
-	width: 100%;
-	max-width: 420px;
-	margin: 0 auto;
+.card {
+	width: min(32rem, 100%);
+	padding: clamp(1.5rem, 3vw, 2.25rem);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: calc(var(--radius-xl) * 1.25);
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0)),
+		rgba(18, 18, 18, 0.74);
+	backdrop-filter: blur(18px);
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
 }
 
-.formFieldsWrapper {
+.header {
+	margin-bottom: var(--space-8);
+}
+
+.title {
+	margin: 0;
+	font-family: var(--font-heading);
+	font-size: clamp(2rem, 4vw, 2.5rem);
+	color: var(--text-primary);
+}
+
+.subtitle {
+	margin: var(--space-3) 0 0;
+	color: var(--text-secondary);
+	line-height: 1.6;
+}
+
+.form {
 	display: flex;
-	gap: 1rem;
 	flex-direction: column;
-	width: 100%;
-	margin: 0 auto;
+	gap: var(--space-5);
 }
 
-.footerText {
+.inputWrap {
+	position: relative;
+}
+
+.iconLeading {
+	position: absolute;
+	top: 50%;
+	left: var(--space-4);
+	transform: translateY(-50%);
+	color: var(--text-muted);
+	pointer-events: none;
+}
+
+.input {
+	padding-left: 2.9rem;
+}
+
+.inputPassword {
+	padding-left: 2.9rem;
+	padding-right: 3rem;
+}
+
+.toggle {
+	position: absolute;
+	top: 50%;
+	right: var(--space-2);
+	transform: translateY(-50%);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 0;
+	background: transparent;
+	color: var(--text-muted);
+	cursor: pointer;
+}
+
+.footer {
+	margin-top: var(--space-6);
+	color: var(--text-secondary);
 	text-align: center;
-	margin-top: 1rem;
 }
 
 .link {
-	position: relative;
-	font-weight: 500;
-	font-size: 1rem;
-	cursor: pointer;
-	font-style: italic;
-	color: var(--chakra-colors-bg-primary);
-}
-
-.link::before {
-	content: '';
-	position: absolute;
-	height: 2px;
-	width: 0%;
-	bottom: -1px;
-	background-color: var(--color-primary);
-	display: inline-block;
-	transition: width 0.3s ease;
-}
-
-.link:hover::before {
-	width: 100%;
+	color: var(--text-primary);
+	text-decoration: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }

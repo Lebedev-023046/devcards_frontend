@@ -1,13 +1,7 @@
-import { ROUTES } from '@/shared/routes';
-import { useColorModeValue } from '@/shared/styles/color-mode';
-
-import { FlipCard } from '@/shared/ui/flipCard';
-import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useManageFavoriteDeck } from '../favorite-decks/hooks/useManageFavoriteDeck';
-import { useDeleteDeckView } from '../hooks/useManageDeckDeletion';
+import { Button } from "@/shared/ui";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import styles from "./DeckCard.module.css";
 
 interface Props {
 	deckId: string;
@@ -16,104 +10,72 @@ interface Props {
 	totalCards: number;
 	tagNames: string[];
 	deckCoverUrl: string;
+	href: string;
+	ctaLabel?: string;
+	eyebrow?: string;
+	variant?: "default" | "featured";
 }
 
 export function DeckCard({
-	deckId,
 	title,
 	description,
 	totalCards,
 	tagNames,
 	deckCoverUrl,
+	href,
+	ctaLabel = "Открыть колоду",
+	eyebrow = "Колода",
+	variant = "default",
 }: Props) {
-	const [isInfoOpen, setIsInfoOpen] = useState(false);
-
-	const { renderConfirmDeckDeletionDialog, renderRemoveIcon } =
-		useDeleteDeckView();
-	const { renderFavoriteDeckIcon } = useManageFavoriteDeck({ deckId });
-
 	const bgImagePath = deckCoverUrl
 		? `${import.meta.env.VITE_API_URL}${deckCoverUrl}`
 		: undefined;
-	const overlay = useColorModeValue(
-		'',
-		'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),',
-	);
-
-	const front = (
-		<Box
-			bg={bgImagePath ? 'transparent' : 'bg-accent'}
-			bgImage={`${overlay} url(${bgImagePath})`}
-			p='1.5rem 1rem'
-			h='100%'
-			bgRepeat='no-repeat'
-			bgSize='cover'
-		>
-			<Stack height={'100%'} overflow={'auto'} gap={2}>
-				<Flex
-					gap={2}
-					alignItems={'flex-start'}
-					justifyContent={'space-between'}
-				>
-					<Heading as={'h2'}>{title}</Heading>
-					<Flex gap={2} mt='0.2rem'>
-						{renderRemoveIcon(deckId)}
-						{renderFavoriteDeckIcon()}
-					</Flex>
-				</Flex>
-
-				<Text>{description}</Text>
-
-				<Flex wrap={'wrap'} mt={'auto'} gap={2} alignItems={'center'}>
-					<Button
-						asChild
-						flex={'1 0 50%'}
-						bg={'button-secondary-gradient'}
-						onClick={() => setIsInfoOpen(true)}
-					>
-						<Link to={ROUTES.DECK(deckId)}>
-							Перейти к колоде <ArrowUpRight />
-						</Link>
-					</Button>
-					<Button
-						flex={'1 0 50%'}
-						bg={'button-primary-gradient'}
-						onClick={() => setIsInfoOpen(true)}
-					>
-						Подробнее <ArrowRight />
-					</Button>
-				</Flex>
-			</Stack>
-		</Box>
-	);
-
-	const back = (
-		<Box
-			bg={bgImagePath ? 'transparent' : 'bg-accent'}
-			bgImage={`${overlay} url(${bgImagePath})`}
-			p='1.5rem 1rem'
-			h={'100%'}
-			bgRepeat='no-repeat'
-			bgSize='cover'
-		>
-			<Stack height={'100%'} overflow={'auto'} gap={2}>
-				<Text>Количество карточек: {totalCards}</Text>
-				<Text>Теги: {tagNames.length ? tagNames.join(', ') : 'нет'}</Text>
-				<Button
-					mt={'auto'}
-					bg={'button-primary-gradient'}
-					onClick={() => setIsInfoOpen(false)}
-				>
-					<ArrowLeft /> Вернуться
-				</Button>
-			</Stack>
-		</Box>
-	);
 
 	return (
-		<>
-			{renderConfirmDeckDeletionDialog()}
-			<FlipCard front={front} back={back} isFlipped={isInfoOpen} />
-		</>
+		<article
+			className={`${styles.card} ${variant === "featured" ? styles.featured : ""}`}
+		>
+			<div
+				className={styles.cover}
+				style={
+					bgImagePath
+						? {
+								backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.72)), url(${bgImagePath})`,
+							}
+						: undefined
+				}
+			>
+				<span className={styles.eyebrow}>{eyebrow}</span>
+				<span className={styles.count}>{totalCards} карточек</span>
+			</div>
+			<div className={styles.body}>
+				<div>
+					<h3 className={styles.title}>{title}</h3>
+					<p className={styles.description}>{description}</p>
+				</div>
+				<div className={styles.tags}>
+					{tagNames.length ? (
+						tagNames.slice(0, 4).map((tagName) => (
+							<span key={tagName} className={styles.tag}>
+								{tagName}
+							</span>
+						))
+					) : (
+						<span className={styles.tag}>Без тегов</span>
+					)}
+				</div>
+				<div className={styles.footer}>
+					<span className={styles.meta}>
+						{tagNames.length ? `${tagNames.length} тем` : "Спокойный старт"}
+					</span>
+					<Button asChild variant="ghost">
+						<Link to={href}>
+							{ctaLabel}
+							<ArrowRight size={16} />
+						</Link>
+					</Button>
+				</div>
+			</div>
+		</article>
 	);
 }
